@@ -1,8 +1,17 @@
 import React from 'react';
+import API from './API';
+
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+
+	doSomething = () => {
+		API.get('/')
+			.then(res => {})
+			.catch(err => {});
+	}
+
 	return (
 		<div className="App">
 			<header className="App-header">
