@@ -1,0 +1,8 @@
+.navbar {
+    width: 100vw;
+    background-color: var(--navbar-color);
+}
+
+.navbar-light .navbar-nav .navbar-link {
+    color: white;
+}

@@ -1,33 +1,32 @@
 import React from 'react';
-import API from './API';
+// import API from './API';
 
-import logo from './logo.svg';
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Container, Row } from 'react-bootstrap';
+
+// Components
+import CCSNavbar from './components/CCSNavbar'
+import CCSFooter from './components/CCSFooter'
+import Home from './components/Home'
+
+// CSS
+import './css/App.css';
 
 class App extends React.Component {
 
-	doSomething = () => {
-		API.get('/')
-			.then(res => { })
-			.catch(err => { });
-	}
-
 	render() {
 		return (
-			<div className="App">
-				<header className="App-header">
-					<img src={logo} className="App-logo" alt="logo" />
-					<p>Dunno. Do some shit. </p>
-					<a
-						className="App-link"
-						href="https://reactjs.org"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						Learn React
-				</a>
-				</header>
-			</div>
+			<Container fluid={true} className='rootContainer'>
+				<Row className='navbarRow'>
+					<CCSNavbar/>
+				</Row>
+				<Row className='homePageRow'>
+					<Home />
+				</Row>
+				<Row className='footerRow'>
+					<CCSFooter />
+				</Row>
+			</Container>
 		);
 	}
 }
