@@ -1,6 +1,6 @@
 .footer {
-    background-color: var(--footer-color);
     width: 100vw;
+    background-color: var(--footer-color);
 }
 
 .footer-img {

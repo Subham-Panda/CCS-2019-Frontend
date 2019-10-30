@@ -4,7 +4,7 @@
 }
 
 html {
-	font-size: 16px;
+	font-size: 0.95vw;
 }
 
 body {
@@ -19,7 +19,7 @@ body {
     animation: backgroundScroll 200s linear infinite;
     animation-fill-mode: forwards;
 
-	overflow-x: hidden;
+	overflow: hidden;
 }
 
 #root {
@@ -34,17 +34,17 @@ body {
 
 .navbarRow {
 	position: sticky;
-    top: 0;
+	top: 0;
 }
 
 .homePageRow {
 	width: inherit;
-	height: 90vh;
 }
 
 .footerRow {
-	position: sticky;
+	position: absolute;
 	bottom: 0;
+	width: inherit
 }
 
 @keyframes backgroundScroll {
@@ -69,6 +69,14 @@ body {
 }
 
 @media (max-width: 769px) {
+	html {
+		font-size: 2vw;
+	}
+
+	.navbarRow {
+		font-size: 1.7rem;
+	}
+
 	body {
         -webkit-animation: none;
         -webkit-animation-fill-mode: none;

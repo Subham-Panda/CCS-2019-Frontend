@@ -13,7 +13,7 @@ import csivitu from '../images/@csivitu.png';
 class CCSFooter extends React.Component {
     render () {
         return (
-            <Row className='footer p-4 navbar-static-bottom'>
+            <Row className='footer p-4 navbar-static-bottom m-auto'>
                 <div className='container text-center text-md-left'>
                     <div className='row d-flex justify-content-around'>
                         <a
