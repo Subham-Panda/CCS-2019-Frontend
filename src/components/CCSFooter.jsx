@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Row } from 'react-bootstrap';
+import { Row, Container } from 'react-bootstrap';
 
 import '../css/CCSFooter.css'
 
@@ -13,9 +13,9 @@ import csivitu from '../images/@csivitu.png';
 class CCSFooter extends React.Component {
     render () {
         return (
-            <Row className='footer p-4 navbar-static-bottom m-auto'>
-                <div className='container text-center text-md-left'>
-                    <div className='row d-flex justify-content-around'>
+            <Row className='footer p-4'>
+                <Container className='text-center text-md-left'>
+                    <Row className='d-flex justify-content-around'>
                         <a
                             href='https://www.facebook.com/csivitu'
                             target='_blank'
@@ -44,8 +44,8 @@ class CCSFooter extends React.Component {
                         >
                             <img src={csivitu} className='footer-img' alt='csivit'/>
                         </a>
-                    </div>
-                </div>
+                    </Row>
+                </Container>
             </Row>
         );
     }
