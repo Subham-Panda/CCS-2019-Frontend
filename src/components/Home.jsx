@@ -18,12 +18,14 @@ import videoIllustration from '../images/video_01.png';
 class Home extends React.Component {
     render () {
         return (
-            <Container fluid='true' className='home img-fluid text-center'>
+            <Container fluid='true' className='home text-center d-flex flex-column justify-content-around'>
+                <Container>
                 <img
                 src={CSILogo}
                 alt='csi-logo'
-                className='csiLogo mt-3 p-4'
+                className='csiLogo p-4 img-fluid'
                 />
+                </Container>
 
                 <Container fluid='true' className='textContainer'>
                     <div className='titleText text-uppercase m-auto pb-3'>

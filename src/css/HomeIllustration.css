@@ -1,5 +1,9 @@
+.illustrationContainer {
+    max-height: 38vh;
+}
+
 .homeIllustration {
-    width: 17vw;
+    width: 15vw;
     max-height: 40vh;
 }
 

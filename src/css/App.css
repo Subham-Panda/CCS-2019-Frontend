@@ -44,8 +44,8 @@ body {
 .homePageRow {
 	width: inherit;
 	height: 100%;
-	padding-top: 6vh;
-	padding-bottom: 10vh;
+	padding-top: 7vh;
+	padding-bottom: 8vh;
 }
 
 .footerRow {
@@ -79,7 +79,7 @@ body {
 
 @media (max-width: 769px) {
 	html {
-		font-size: 2vw;
+		font-size: 3vw;
 	}
 
 	.navbarRow {
