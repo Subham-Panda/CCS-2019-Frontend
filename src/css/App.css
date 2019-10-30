@@ -11,8 +11,13 @@ body {
 	width: 100vw;
 	height: 100vh;
 	background-image: url('../images/background.png');
-	background-attachment: fixed;
-	background-size: cover;
+	background-repeat: repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    -webkit-animation: backgroundScroll 200s linear infinite;
+    -webkit-animation-fill-mode: forwards;
+    animation: backgroundScroll 200s linear infinite;
+    animation-fill-mode: forwards;
 
 	overflow-x: hidden;
 }
@@ -40,4 +45,34 @@ body {
 .footerRow {
 	position: sticky;
 	bottom: 0;
+}
+
+@keyframes backgroundScroll {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: -1985px 0px;
+    }
+}
+
+
+@-webkit-keyframes backgroundScroll {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: -1985px 0px;
+    }
+}
+
+@media (max-width: 769px) {
+	body {
+        -webkit-animation: none;
+        -webkit-animation-fill-mode: none;
+        animation: none;
+        animation-fill-mode: none;
+    }
 }
