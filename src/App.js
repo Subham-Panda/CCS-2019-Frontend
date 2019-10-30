@@ -20,7 +20,7 @@ class App extends React.Component {
 				<Row className='navbarRow'>
 					<CCSNavbar/>
 				</Row>
-				<Row className='homePageRow'>
+				<Row className='homePageRow d-flex'>
 					<Home />
 				</Row>
 				<Row className='footerRow'>
