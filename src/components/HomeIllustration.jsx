@@ -18,8 +18,10 @@ class HomeIllustration extends React.Component {
 
     render () {
         console.log(this.state);
-        if (this.state.domain === true) {
-            return <Redirect to='/dashboard' />
+        if (this.state.domain) {
+            return (
+                <Redirect to='/home' />
+            );
         }
 
         return (
