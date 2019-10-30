@@ -7,7 +7,7 @@
 }
 
 html {
-	font-size: 0.95vw;
+	font-size: 14px;
 }
 
 body {
@@ -92,4 +92,16 @@ body {
         animation: none;
         animation-fill-mode: none;
     }
+}
+
+@media (min-width: 1800px) {
+	html {
+		font-size: 20px;
+	}
+}
+
+@media (min-width: 2500px) {
+	html {
+		font-size: 40px;
+	}
 }
