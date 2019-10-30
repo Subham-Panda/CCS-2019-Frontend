@@ -19,7 +19,7 @@ body {
     animation: backgroundScroll 200s linear infinite;
     animation-fill-mode: forwards;
 
-	overflow: hidden;
+	overflow-x: hidden;
 }
 
 #root {
@@ -42,7 +42,7 @@ body {
 }
 
 .footerRow {
-	position: absolute;
+	position: sticky;
 	bottom: 0;
 	width: inherit
 }
