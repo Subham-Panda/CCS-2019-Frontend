@@ -46,6 +46,14 @@
     }
 
     .taglineText {
+        font-size: 1.2rem;
+    }
+
+    .subtitleText {
+        font-size: 1.5rem;
+    }
+
+    .taglineText {
         width: 100%;
     }
 
