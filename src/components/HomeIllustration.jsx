@@ -20,7 +20,7 @@ class HomeIllustration extends React.Component {
         console.log(this.state);
         if (this.state.domain) {
             return (
-                <Redirect to='/home' />
+                <Redirect to='/quiz' />
             );
         }
 
