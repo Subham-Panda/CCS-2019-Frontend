@@ -24,6 +24,14 @@
         width: 30vw;
     }
 
+    .techIllustration {
+        transform: translateX(-20%);
+    }
+
+    .videoIllustration {
+        transform: translateX(-8%);
+    }
+
     .domainButton {
         transform: translateX(-10%);
         width: 30vw;
