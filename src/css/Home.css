@@ -3,6 +3,31 @@
     height: inherit;
 }
 
+.csiLogo {
+    width: 27vw;
+}
+
+.titleText {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: var(--navbar-color);
+}
+
 .textContainer {
-    
+    width: 60%;
+}
+
+.taglineText {
+    color: var(--tagline-color);
+    width: 56vw;
+    font-size: 1.2rem;
+}
+
+.subtitleText {
+    color: var(--subtitle-color);
+    font-size: 2rem;
+}
+
+.illustrations {
+    width: 80%;
 }

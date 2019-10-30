@@ -1,6 +1,9 @@
 :root {
 	--navbar-color: #11355c;
 	--footer-color: #ffffff;
+	--tagline-color: #adadad;
+	--subtitle-color: #565656;
+	--domain-button-color: #ffffff;
 }
 
 html {
@@ -25,6 +28,7 @@ body {
 #root {
 	width: inherit;
 	height: inherit;
+	font-family: 'Cabin', sans-serif;
 }
 
 .rootContainer {

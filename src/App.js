@@ -5,9 +5,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row } from 'react-bootstrap';
 
 // Components
-import CCSNavbar from './components/CCSNavbar'
-import CCSFooter from './components/CCSFooter'
-import Home from './components/Home'
+import CCSNavbar from './components/CCSNavbar';
+import CCSFooter from './components/CCSFooter';
+import Home from './components/Home';
+
+// Fonts
+import './css/fonts.css';
 
 // CSS
 import './css/App.css';
