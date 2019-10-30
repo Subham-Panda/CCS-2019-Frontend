@@ -31,3 +31,28 @@
 .illustrations {
     width: 80%;
 }
+
+@media (max-width: 769px) {
+    .csiLogo {
+        width: 60vw;
+    }
+
+    .textContainer {
+        width: 95%;
+    }
+
+    .titleText {
+        font-size: 3rem;
+    }
+
+    .taglineText {
+        width: 100%;
+    }
+
+    .illustrations {
+        overflow-y: scroll;
+        height: 40vh;
+        width: 100%;
+        padding: 1vh;
+    }
+}

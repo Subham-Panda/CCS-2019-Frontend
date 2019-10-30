@@ -18,3 +18,14 @@
     transform:translateY(-85%);
     color: var(--navbar-color);
 }
+
+@media (max-width: 769px) {
+    .homeIllustration {
+        width: 30vw;
+    }
+
+    .domainButton {
+        transform: translateX(-10%);
+        width: 30vw;
+    }
+}
