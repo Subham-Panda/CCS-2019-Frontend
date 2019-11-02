@@ -14,7 +14,7 @@ class CCSFooter extends React.Component {
     render () {
         return (
             <Row className='footer p-4 navbar-static-bottom m-auto'>
-                <Container className='text-center text-md-left'>
+                <Container className='text-center text-md-left footer-content'>
                     <Row className='d-flex justify-content-around'>
                         <a
                             href='https://www.facebook.com/csivitu'
