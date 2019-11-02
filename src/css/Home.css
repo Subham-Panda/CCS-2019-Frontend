@@ -32,6 +32,12 @@
     width: 70%;
 }
 
+@media (max-width: 1225px) {
+    .illustrations {
+        width: 80%;
+    }
+}
+
 @media (max-width: 769px) {
     .csiLogo {
         width: 60vw;

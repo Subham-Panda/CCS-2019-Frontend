@@ -19,6 +19,16 @@
     color: var(--navbar-color);
 }
 
+@media (max-width: 1030px) {
+    .homeIllustration {
+        width: 18vw;
+    }
+
+    .domainButton {
+        width: 14vw;
+    }
+}
+
 @media (max-width: 769px) {
     .homeIllustration {
         width: 30vw;

@@ -17,9 +17,9 @@ body {
 	background-repeat: repeat;
     background-attachment: fixed;
     background-size: cover;
-    -webkit-animation: backgroundScroll 200s linear infinite;
+    -webkit-animation: backgroundScroll 150s linear infinite;
     -webkit-animation-fill-mode: forwards;
-    animation: backgroundScroll 200s linear infinite;
+    animation: backgroundScroll 150s linear infinite;
     animation-fill-mode: forwards;
 
 	overflow-x: hidden;
