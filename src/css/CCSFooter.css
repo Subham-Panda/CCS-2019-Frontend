@@ -10,3 +10,9 @@
 .footer-content {
     width: 50%;
 }
+
+@media (max-width: 576px) {
+    .footer-content {
+        width: 100%;
+    }
+}
