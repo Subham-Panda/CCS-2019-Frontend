@@ -20,11 +20,13 @@ class Home extends React.Component {
         return (
             <Container fluid='true' className='home text-center d-flex flex-column justify-content-around'>
                 <Container>
-                <img
-                src={CSILogo}
-                alt='csi-logo'
-                className='csiLogo p-4 mt-1 img-fluid'
-                />
+                    <a href='https://csivit.com' rel='noopener noreferrer' target='_blank'>
+                    <img
+                    src={CSILogo}
+                    alt='csi-logo'
+                    className='csiLogo p-4 mt-1 img-fluid'
+                    />
+                    </a>
                 </Container>
 
                 <Container fluid='true' className='textContainer'>
