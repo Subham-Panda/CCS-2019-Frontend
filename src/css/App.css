@@ -37,8 +37,8 @@ body {
 }
 
 .rootContainer {
-	width: inherit;
-	height: inherit;
+	height: 100vh;
+	width: 100vw;
 	font-family: 'Cabin', sans-serif;
 }
 
