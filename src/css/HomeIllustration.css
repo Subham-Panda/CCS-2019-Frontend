@@ -1,0 +1,49 @@
+.illustrationContainer {
+    max-height: 38vh;
+}
+
+.homeIllustration {
+    width: 15vw;
+    max-height: 40vh;
+}
+
+.domainButton {
+    background-color: var(--domain-button-color);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    border-radius: 83px;
+    width: 10vw;
+
+    font-size: 1rem;
+    font-weight: bold;
+    transform:translateY(-75%);
+    color: var(--navbar-color);
+}
+
+@media (max-width: 1030px) {
+    .homeIllustration {
+        width: 18vw;
+    }
+
+    .domainButton {
+        width: 14vw;
+    }
+}
+
+@media (max-width: 769px) {
+    .homeIllustration {
+        width: 30vw;
+    }
+
+    .techIllustration {
+        transform: translateX(-20%);
+    }
+
+    .videoIllustration {
+        transform: translateX(-8%);
+    }
+
+    .domainButton {
+        transform: translateX(-10%);
+        width: 30vw;
+    }
+}

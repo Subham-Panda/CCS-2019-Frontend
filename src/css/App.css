@@ -1,0 +1,110 @@
+:root {
+	--navbar-color: #11355c;
+	--footer-color: #ffffff;
+	--tagline-color: #adadad;
+	--subtitle-color: #565656;
+	--domain-button-color: #ffffff;
+}
+
+html {
+	font-size: 14px;
+}
+
+body {
+	width: 100vw;
+	height: 100vh;
+
+	overflow-x: hidden;
+	background-color: #f6f6f6;
+}
+
+.backgroundImage {
+	width: 100vw;
+	height: 100vh;
+	background-image: url('../images/background.png');
+	background-repeat: repeat;
+    background-attachment: fixed;
+	background-size: cover;
+    -webkit-animation: backgroundScroll 150s linear infinite;
+    -webkit-animation-fill-mode: forwards;
+    animation: backgroundScroll 150s linear infinite;
+	animation-fill-mode: forwards;
+	z-index: -1;
+
+	opacity: 0.06;
+
+	position: fixed;
+}
+
+.rootContainer {
+	height: 100vh;
+	width: 100vw;
+	font-family: 'Cabin', sans-serif;
+}
+
+.navbarRow {
+	z-index: 1;
+	max-height: 6vh;
+}
+
+.homePageRow {
+	width: inherit;
+	height: 100%;
+	padding-top: 7vh;
+	padding-bottom: 6vh;
+}
+
+.footerRow {
+	position: fixed;
+	bottom: 0;
+	width: inherit;
+	max-height: 10vh;
+	z-index: 1;
+}
+
+@keyframes backgroundScroll {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: -1985px 0px;
+    }
+}
+
+
+@-webkit-keyframes backgroundScroll {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: -1985px 0px;
+    }
+}
+
+@media (max-width: 769px) {
+	html {
+		font-size: 3vw;
+	}
+
+	.backgroundImage {
+		background-size: 250%;
+	}
+
+	.navbarRow {
+		font-size: 1.7rem;
+	}
+}
+
+@media (min-width: 1800px) {
+	html {
+		font-size: 20px;
+	}
+}
+
+@media (min-width: 2500px) {
+	html {
+		font-size: 40px;
+	}
+}

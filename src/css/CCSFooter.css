@@ -1,0 +1,18 @@
+.footer {
+    width: 100vw;
+    background-color: var(--footer-color);
+}
+
+.footer-img {
+    height: 2.7vh;
+}
+
+.footer-content {
+    width: 50%;
+}
+
+@media (max-width: 576px) {
+    .footer-content {
+        width: 100%;
+    }
+}

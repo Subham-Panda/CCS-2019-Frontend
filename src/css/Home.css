@@ -1,0 +1,75 @@
+.home {
+    width: inherit;
+    height: inherit;
+	overflow-y: scroll;
+}
+
+.csiLogo {
+    width: 24vw;
+}
+
+.titleText {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: var(--navbar-color);
+}
+
+.textContainer {
+    width: 60%;
+}
+
+.taglineText {
+    color: var(--tagline-color);
+    width: 56vw;
+    font-size: 1.2rem;
+}
+
+.subtitleText {
+    color: var(--subtitle-color);
+    font-size: 1.5rem;
+}
+
+.illustrations {
+    width: 70%;
+}
+
+@media (max-width: 1225px) {
+    .illustrations {
+        width: 80%;
+    }
+    .textContainer {
+        width: 80%;
+    }
+}
+
+@media (max-width: 769px) {
+    .csiLogo {
+        width: 60vw;
+    }
+
+    .textContainer {
+        width: 95%;
+    }
+
+    .titleText {
+        font-size: 3rem;
+    }
+
+    .taglineText {
+        font-size: 1.2rem;
+    }
+
+    .subtitleText {
+        font-size: 1.5rem;
+    }
+
+    .taglineText {
+        width: 100%;
+    }
+
+    .illustrations {
+        height: 40vh;
+        width: 100%;
+        padding: 1vh;
+    }
+}
