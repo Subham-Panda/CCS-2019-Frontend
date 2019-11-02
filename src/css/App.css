@@ -23,6 +23,7 @@ body {
     animation-fill-mode: forwards;
 
 	overflow-x: hidden;
+	overflow-y: scroll;
 }
 
 #root {

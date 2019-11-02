@@ -25,7 +25,7 @@
 
 .subtitleText {
     color: var(--subtitle-color);
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 .illustrations {
@@ -34,6 +34,9 @@
 
 @media (max-width: 1225px) {
     .illustrations {
+        width: 80%;
+    }
+    .textContainer {
         width: 80%;
     }
 }
@@ -64,7 +67,6 @@
     }
 
     .illustrations {
-        overflow-y: scroll;
         height: 40vh;
         width: 100%;
         padding: 1vh;
