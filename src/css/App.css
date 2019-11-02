@@ -15,7 +15,6 @@ body {
 	height: 100vh;
 
 	overflow-x: hidden;
-	overflow-y: scroll;
 	background-color: #f6f6f6;
 }
 
@@ -53,6 +52,8 @@ body {
 	height: 100%;
 	padding-top: 7vh;
 	padding-bottom: 8vh;
+
+	overflow-y: scroll;
 }
 
 .footerRow {
@@ -92,13 +93,6 @@ body {
 	.navbarRow {
 		font-size: 1.7rem;
 	}
-
-	body {
-        -webkit-animation: none;
-        -webkit-animation-fill-mode: none;
-        animation: none;
-        animation-fill-mode: none;
-    }
 }
 
 @media (min-width: 1800px) {

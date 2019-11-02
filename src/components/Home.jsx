@@ -23,7 +23,7 @@ class Home extends React.Component {
                 <img
                 src={CSILogo}
                 alt='csi-logo'
-                className='csiLogo p-4 img-fluid'
+                className='csiLogo p-4 mt-1 img-fluid'
                 />
                 </Container>
 
