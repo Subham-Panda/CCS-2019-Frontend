@@ -1,6 +1,7 @@
 .home {
     width: inherit;
     height: inherit;
+	overflow-y: scroll;
 }
 
 .csiLogo {
