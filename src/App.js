@@ -19,17 +19,20 @@ class App extends React.Component {
 
 	render() {
 		return (
-			<Container fluid={true} className='rootContainer'>
-				<Row className='navbarRow'>
-					<CCSNavbar/>
-				</Row>
-				<Row className='homePageRow d-flex'>
-					<Home />
-				</Row>
-				<Row className='footerRow'>
-					<CCSFooter />
-				</Row>
-			</Container>
+			<>
+				<div className='backgroundImage'></div>
+				<Container fluid={true} className='rootContainer'>
+					<Row className='navbarRow'>
+						<CCSNavbar/>
+					</Row>
+					<Row className='homePageRow d-flex'>
+						<Home />
+					</Row>
+					<Row className='footerRow'>
+						<CCSFooter />
+					</Row>
+				</Container>
+			</>
 		);
 	}
 }

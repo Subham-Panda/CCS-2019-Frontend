@@ -13,6 +13,15 @@ html {
 body {
 	width: 100vw;
 	height: 100vh;
+
+	overflow-x: hidden;
+	overflow-y: scroll;
+	background-color: #f6f6f6;
+}
+
+.backgroundImage {
+	width: 100vw;
+	height: 100vh;
 	background-image: url('../images/background.png');
 	background-repeat: repeat;
     background-attachment: fixed;
@@ -20,21 +29,18 @@ body {
     -webkit-animation: backgroundScroll 150s linear infinite;
     -webkit-animation-fill-mode: forwards;
     animation: backgroundScroll 150s linear infinite;
-    animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+	z-index: -1;
 
-	overflow-x: hidden;
-	overflow-y: scroll;
-}
+	opacity: 0.06;
 
-#root {
-	width: inherit;
-	height: inherit;
-	font-family: 'Cabin', sans-serif;
+	position: fixed;
 }
 
 .rootContainer {
 	width: inherit;
 	height: inherit;
+	font-family: 'Cabin', sans-serif;
 }
 
 .navbarRow {
