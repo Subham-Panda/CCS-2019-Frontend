@@ -35,10 +35,10 @@ class Home extends React.Component {
                 </Row>
 
                 <Row className='illustrations m-auto'>
-                    <HomeIllustration imgSrc={ managementIllustration } domain='management'/>
-                    <HomeIllustration imgSrc={ designIllustration } domain='design'/>
-                    <HomeIllustration imgSrc={ techIllustration } domain='tech'/>
-                    <HomeIllustration imgSrc={ videoIllustration } domain='video'/>
+                    <HomeIllustration imgSrc={managementIllustration} domain='management'/>
+                    <HomeIllustration imgSrc={designIllustration} domain='design'/>
+                    <HomeIllustration imgSrc={techIllustration} domain='tech'/>
+                    <HomeIllustration imgSrc={videoIllustration} domain='video'/>
                 </Row>
             </Container>
         );

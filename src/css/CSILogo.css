@@ -1,3 +1,9 @@
 .csiLogo {
     width: 24vw;
 }
+
+@media (max-width: 769px) {
+    .csiLogo {
+        width: 60vw;
+    }
+}
