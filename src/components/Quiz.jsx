@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Container, Card, Row, Col, Button } from 'react-bootstrap';
-import $ from 'jquery';
+// import $ from 'jquery';
 
 import CSILogo from './CSILogo';
 
