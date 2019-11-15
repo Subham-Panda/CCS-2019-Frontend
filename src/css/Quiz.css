@@ -49,13 +49,17 @@
 .buttonContainer button {
     border-radius: 0.4rem;
     border: none;
-    background-color: #F26F70;
+    background-color: var(--navigation-button-color);
 
     width: 8vw;
 }
 
 .buttonContainer button:hover {
     background-color: #d12f2f;
+}
+
+.buttonContainer .submitButton {
+    background-color: rgb(47, 1, 250);
 }
 
 @media (max-width: 769px) {

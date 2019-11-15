@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Container, Card, Row, Col, Button } from 'react-bootstrap';
+import $ from 'jquery';
 
 import CSILogo from './CSILogo';
 
@@ -42,8 +43,8 @@ class Quiz extends React.Component {
                             <Col className='d-flex justify-content-between'>
                                 <Button className='text-uppercase'>Previous</Button>
                                 <div>
-                                    <Button className='text-uppercase mx-4'>Next</Button>
-                                    <Button className='text-uppercase'>Submit</Button>
+                                    <Button className='text-uppercase'>Next</Button>
+                                    <Button className='text-uppercase submitButton ml-4 d-none'>Submit</Button>
                                 </div>
                             </Col>
                         </Row>
