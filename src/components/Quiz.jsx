@@ -18,9 +18,21 @@ class Quiz extends React.Component {
                     <div>
                         <div className='domainName my-1'>Design</div>
                         <div className='questionNo'>Question 1)</div>
-                        <Card className='quizCard questionCard my-1'>
-                        <Card.Body>
+                        <Card className='quizCard questionCard my-1 py-2'>
+                        <Card.Body className='questionCardBody py-0'>
                             <Card.Text>
+                                Some quick example text to build on the card title and make up the bulk of
+                                the card's content.<br />
+                                Some quick example text to build on the card title and make up the bulk of
+                                the card's content. <br />
+                                Some quick example text to build on the card title and make up the bulk of
+                                the card's content. <br />
+                                Some quick example text to build on the card title and make up the bulk of
+                                the card's content. <br />
+                                Some quick example text to build on the card title and make up the bulk of
+                                the card's content. <br />
+                                Some quick example text to build on the card title and make up the bulk of
+                                the card's content. <br />
                                 Some quick example text to build on the card title and make up the bulk of
                                 the card's content.
                             </Card.Text>
@@ -28,8 +40,10 @@ class Quiz extends React.Component {
                         </Card>
                     </div>
                     <div>
-                        <Row>
-                            <Col md='3'><img src={illustration} alt='Illustration' className='illustration'/></Col>
+                        <Row className='py-2'>
+                            <Col md='3' className='d-flex flex-column justify-content-center'>
+                                <img src={illustration} alt='Illustration' className='illustration'/>
+                            </Col>
                             <Col>
                                 <Card className='quizCard answerCard'>
                                 <Card.Body>
@@ -38,7 +52,7 @@ class Quiz extends React.Component {
                                 </Card>
                             </Col>
                         </Row>
-                        <Row className='buttonContainer mt-3'>
+                        <Row className='buttonContainer mt-1'>
                             <Col md='3'></Col>
                             <Col className='d-flex justify-content-between'>
                                 <Button className='text-uppercase'>Previous</Button>

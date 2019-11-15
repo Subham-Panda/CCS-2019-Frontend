@@ -24,6 +24,11 @@
 .questionCard {
     background-color: var(--navbar-color);
     color: white;
+    max-height: 12vh;
+}
+
+.questionCardBody {
+    overflow-y: scroll;
 }
 
 .illustration {
