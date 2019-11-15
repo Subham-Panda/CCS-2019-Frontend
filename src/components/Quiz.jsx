@@ -1,12 +1,18 @@
 import React from 'react';
 
+import { Container, Row } from 'react-bootstrap';
+
+import CSILogo from './CSILogo';
+
 import '../css/Quiz.css';
 
 class Quiz extends React.Component {
     render() {
         return (
-            <h1>Quiz page</h1>
-        )
+            <Container>
+                <CSILogo />
+            </Container>
+        );
     }
 }
 

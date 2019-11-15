@@ -17,12 +17,10 @@ import './css/fonts.css';
 
 // CSS
 import './css/App.css';
-
 class App extends React.Component {
-
 	render() {
 		return (
-			<Router history={Router}>
+			<Router>
 				<div className='backgroundImage'></div>
 				<Container fluid={true} className='rootContainer'>
 					<Row className='navbarRow'>
