@@ -70,9 +70,20 @@
 @media (max-width: 769px) {
     .quizContainer {
         width: 100vw;
+        overflow-y: scroll;
     }
 
     .illustration {
+        width: 50vw;
+        margin: 0 auto;
+    }
+
+    .quizContainer .mainContent {
+        display: block;
+        margin-top: 3vh;
+    }
+
+    .buttonContainer button {
         width: 30vw;
     }
 }
