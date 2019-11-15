@@ -3,6 +3,7 @@ import React from 'react';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row } from 'react-bootstrap';
+import $ from ‘jquery’;
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
