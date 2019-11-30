@@ -4,7 +4,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row } from 'react-bootstrap';
 
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, ExternalRedirect } from 'react-router-dom';
 
 // Components
 import CCSNavbar from './components/CCSNavbar';
@@ -31,6 +31,9 @@ class App extends React.Component {
 						<Switch>
 							<Route exact path='/' component={ComingSoon /*Home*/} />
 							<Route path='/quiz' component={Quiz} />
+							<Route path='/register' component={() => {
+								window.location.href="https://accounts.csivit.com/auth/register"
+							}}></Route>
           				</Switch>
 					</Row>
 					<Row className='footerRow'>

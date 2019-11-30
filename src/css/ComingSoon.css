@@ -27,7 +27,23 @@
 
 .timerContainer {
     width: 70%;
+}
+
+.signupButtonContainer {
     height: 20vh;
+}
+
+.csiIcon {
+    width: 2.2rem;
+}
+
+.signupButton {
+    border-color: var(--subtitle-color);
+    color: var(--subtitle-color);
+}
+
+.signupButton:hover {
+    border: 1px solid var(--subtitle-color);
 }
 
 @media (max-width: 1225px) {
@@ -65,7 +81,6 @@
     }
 
     .timerContainer {
-        height: 40vh;
         width: 100%;
         padding: 1vh;
     }

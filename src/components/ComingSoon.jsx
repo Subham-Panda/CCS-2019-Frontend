@@ -1,14 +1,22 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
-import { Container } from 'react-bootstrap';
-import Timer from './Timer';
-
-import '../css/ComingSoon.css';
+import { Container, Button } from 'react-bootstrap';
 
 // Components
 import CSILogo from '../components/CSILogo';
+import Timer from './Timer';
 
-class Home extends React.Component {
+// CSS
+import '../css/ComingSoon.css';
+
+import csiIcon from '../images/favicon.png';
+
+class ComingSoon extends React.Component {
+    routeChange = () => {
+        this.props.history.push('/register');
+    }
+
     render () {
         return (
             <Container fluid='true' className='home text-center d-flex flex-column justify-content-around'>
@@ -22,15 +30,26 @@ class Home extends React.Component {
                     <div className='taglineText m-auto'>
                         Be a part of CSI where skilled designers, developers and tech enthusiasts engage in a lot of projects and hackathons, to help push technology forward.
                     </div>
-                    <div className="subtitleText pt-4 m-auto">Starts in</div>
                 </div>
 
                 <div className="timerContainer text-center m-auto">
+                    <div className="subtitleText pb-4 m-auto">Starts in</div>
                     <Timer />
                 </div>
+
+                <div className="signupButtonContainer d-flex flex-column m-auto justify-content-center">
+                    <Button 
+                    className="signupButton"
+                    variant="light"
+                    onClick={this.routeChange}>
+                        <img src={csiIcon} alt="" className="csiIcon pr-2" />
+                        Sign up with your CSI-VIT Account
+                    </Button>
+                </div>
+
             </Container>
         );
     }
 }
 
-export default Home;
+export default withRouter(ComingSoon);
