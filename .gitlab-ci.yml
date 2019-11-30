@@ -38,7 +38,8 @@ test:
 deploy:
   stage: deploy
   script:
-    - rsync -avuz --exclude=".*" $CI_PROJECT_DIR/build $SERVER_USER@$SERVER_DOMAIN:~
+    - npm run build
+    - rsync -avuz $CI_PROJECT_DIR/build $SERVER_USER@$SERVER_DOMAIN:~
     # Non interactive ssh gracefully reloads server
   only:
     # Trigger deployments only from master branch
