@@ -28,7 +28,7 @@
 .questionCard {
     background-color: var(--navbar-color);
     color: white;
-    max-height: 20vh;
+    max-height: 17vh;
     overflow-y: auto;
 }
 
