@@ -32,7 +32,6 @@ test:
     - npm run lint
   only:
     - master
-    - staging
     - dev
 
 deploy:
