@@ -17,7 +17,6 @@ class Timer extends React.Component {
     }
 
     render () {
-        console.log(ms(this.state.time - new Date(), {colonNotation: true}))
         setInterval(() => this.setState({
             timeDiff: ms(this.state.time - new Date(), {colonNotation: true, secondsDecimalDigits: 0}).split(':'),
             days: this.state.timeDiff[0],
