@@ -1,0 +1,19 @@
+.timer {
+    font-size: 3rem;
+}
+
+.timer > * {
+    border: 1px solid black;
+    width: 10vw;
+    padding: 1%;
+    border-radius: 0.5rem;
+
+    background-color: var(--navbar-color);
+    color: white;
+}
+
+@media (max-width: 769px) {
+    .timer > * {
+        width: 20vw;
+    }
+}

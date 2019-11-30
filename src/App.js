@@ -9,8 +9,9 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 // Components
 import CCSNavbar from './components/CCSNavbar';
 import CCSFooter from './components/CCSFooter';
-import Home from './components/Home';
+// import Home from './components/Home';
 import Quiz from './components/Quiz';
+import ComingSoon from './components/ComingSoon';
 
 // Fonts
 import './css/fonts.css';
@@ -28,7 +29,7 @@ class App extends React.Component {
 					</Row>
 					<Row className='homePageRow d-flex'>
 						<Switch>
-							<Route exact path='/' component={Home} />
+							<Route exact path='/' component={ComingSoon /*Home*/} />
 							<Route path='/quiz' component={Quiz} />
           				</Switch>
 					</Row>
