@@ -21,6 +21,7 @@
 }
 
 .subtitleText {
+    width: 40vw;
     color: var(--subtitle-color);
     font-size: 1.5rem;
 }
