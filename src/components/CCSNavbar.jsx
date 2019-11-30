@@ -12,7 +12,7 @@ class CCSNavbar extends React.Component {
                 <Navbar.Collapse id='basic-navbar-nav'>
                     <Nav className='mr-auto'>
                         <Nav.Link href='#home' className='navbar-link ml-5' active>HOME</Nav.Link>
-                        <Nav.Link href='#events' className='navbar-link ml-5'>EVENTS</Nav.Link>
+                        <Nav.Link href='https://csivit.com#events' target='_blank' rel='noopener noreferrer' className='navbar-link ml-5'>EVENTS</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

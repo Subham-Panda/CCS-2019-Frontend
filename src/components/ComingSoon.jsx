@@ -32,17 +32,17 @@ class ComingSoon extends React.Component {
                     </div>
                 </div>
 
-                <div className="timerContainer text-center m-auto">
-                    <div className="subtitleText pb-4 m-auto">Starts in</div>
+                <div className='timerContainer text-center m-auto'>
+                    <div className='subtitleText pb-4 m-auto'>Starts in</div>
                     <Timer />
                 </div>
 
-                <div className="signupButtonContainer d-flex flex-column m-auto justify-content-center">
+                <div className='signupButtonContainer d-flex flex-column m-auto justify-content-center'>
                     <Button 
-                    className="signupButton"
-                    variant="light"
+                    className='signupButton'
+                    variant='light'
                     onClick={this.routeChange}>
-                        <img src={csiIcon} alt="" className="csiIcon pr-2" />
+                        <img src={csiIcon} alt='' className='csiIcon pr-2' />
                         Sign up with your CSI-VIT Account
                     </Button>
                 </div>

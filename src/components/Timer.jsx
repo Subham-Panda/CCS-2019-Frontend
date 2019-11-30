@@ -26,11 +26,11 @@ class Timer extends React.Component {
             seconds: this.state.timeDiff[3],
         }), 20);
         return (
-            <div className="m-auto text-center d-flex justify-content-around timer">
-                <div className="days">{this.state.days}<div className="timeUnit">days</div></div>
-                <div className="hours">{this.state.hours}<div className="timeUnit">hours</div></div>
-                <div className="minutes">{this.state.minutes}<div className="timeUnit">minutes</div></div>
-                <div className="seconds">{this.state.seconds}<div className="timeUnit">seconds</div></div>
+            <div className='m-auto text-center d-flex justify-content-around timer'>
+                <div className='days'>{this.state.days}<div className='timeUnit'>days</div></div>
+                <div className='hours'>{this.state.hours}<div className='timeUnit'>hours</div></div>
+                <div className='minutes'>{this.state.minutes}<div className='timeUnit'>minutes</div></div>
+                <div className='seconds'>{this.state.seconds}<div className='timeUnit'>seconds</div></div>
             </div>
         );
     }
