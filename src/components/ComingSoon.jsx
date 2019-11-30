@@ -43,7 +43,7 @@ class ComingSoon extends React.Component {
                     variant='light'
                     onClick={this.routeChange}>
                         <img src={csiIcon} alt='' className='csiIcon pr-2' />
-                        Sign up with your CSI-VIT Account
+                        Sign up for your CSI-VIT Account
                     </Button>
                 </div>
 
