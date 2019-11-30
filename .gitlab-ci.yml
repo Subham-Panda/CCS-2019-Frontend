@@ -38,7 +38,7 @@ deploy:
   stage: deploy
   script:
     - npm run build
-    - rsync -avuz $CI_PROJECT_DIR/build $SERVER_USER@$SERVER_DOMAIN:~/$CI_PROJECT_DIR
+    - rsync -avuz $CI_PROJECT_DIR/build $SERVER_USER@$SERVER_DOMAIN:~/ccs-frontend
     # Non interactive ssh gracefully reloads server
   only:
     # Trigger deployments only from master branch
