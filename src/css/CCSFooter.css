@@ -7,6 +7,12 @@
     height: 2.7vh;
 }
 
+.discordIcon {
+    color: #11355C;
+    height: 3vh;
+    font-size: 3vh;
+}
+
 .footer-content {
     width: 50%;
 }
