@@ -39,7 +39,10 @@
 
 .signupButton {
     border-color: var(--subtitle-color);
-    color: var(--subtitle-color);
+    color: var(--navbar-color);
+    font-size: 1.2rem;
+
+    transform: translateY(-10%);
 }
 
 .signupButton:hover {
