@@ -1,0 +1,27 @@
+.instructionModal {
+    color: var(--navbar-color);
+}
+
+.continueButton {
+    background-color: var(--navbar-color);
+}
+
+.instructionCloseButton {
+    background-color: var(--navigation-button-color);
+}
+
+.instructionCloseButton:hover {
+    background-color: #db5555;
+}
+
+.continueButton:hover {
+    background-color: #12457a;
+}
+
+.continueButton:focus {
+    background-color: var(--navbar-color) !important;
+}
+
+.instructionCloseButton:focus {
+    background-color: #db5555 !important;
+}
