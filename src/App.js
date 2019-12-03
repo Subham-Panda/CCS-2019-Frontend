@@ -1,5 +1,6 @@
 import React from 'react';
 import API from './API';
+import shortid from 'shortid';
 
 import queryString from 'query-string';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -91,13 +92,21 @@ class App extends React.Component {
 							
 							<Route path='/register' component={() => {
 								const redirectUrl = encodeURIComponent(process.env.REACT_APP_REDIRECT_URL);
-								window.location.href=`${process.env.REACT_APP_ACCOUNTS_URL}/oauth/authorize?clientId=${process.env.REACT_APP_CLIENT_ID}&state=2jen9jfnvjn0nv1e&redirectUrl=${redirectUrl}`;
+								const oauthState = encodeURIComponent(shortid.generate());
+								localStorage.setItem('state', oauthState);
+								window.location.href=`${process.env.REACT_APP_ACCOUNTS_URL}/oauth/authorize?clientId=${process.env.REACT_APP_CLIENT_ID}&state=${oauthState}&redirectUrl=${redirectUrl}`;
 								return null;
 							}} />
 
 							<Route path='/oauth/token' component={({match, location}) => {
 								const token = queryString.parse(location.search).token;
-								localStorage.setItem('token', token);
+								const state = queryString.parse(location.search).state;
+								
+								// Only accept token if state matches
+								if (state === localStorage.getItem('state')) {
+									localStorage.setItem('token', token);
+									localStorage.removeItem('state');
+								}
 								return <Redirect to='/'/>
 							}} />
 
