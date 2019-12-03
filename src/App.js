@@ -73,6 +73,8 @@ class App extends React.Component {
 		this.isLoggedIn();
 	}
 
+	// TODO: disable some routes on Logged in
+
 	render() {
 		return (
 			<Router>
@@ -83,9 +85,9 @@ class App extends React.Component {
 					</Row>
 					<Row className='homePageRow d-flex'>
 						<Switch>
-							<Route exact path='/' render={() => {return this.renderHome()}} />
+							<Route exact path='/' render={() => this.renderHome()} />
 
-							<Route path='/quiz' component={Quiz} />
+							{/* <Route path='/quiz' render={() => <Quiz {...this.state}/>} /> */}
 							
 							<Route path='/register' component={() => {
 								window.location.href="https://accounts.csivit.com/oauth/authorize?clientId=294A404E635266556A586E327234753778214125442A472D4B6150645367566B&state=2jen9jfnvjn0nv1e&redirectUrl=https%3A%2F%2Fccs.csivit.com%2Foauth%2Ftoken";
