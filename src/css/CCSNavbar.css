@@ -12,11 +12,6 @@
     outline: none;
 }
 
-.dropdownLink:hover {
-    background-color: var(--navbar-color);
-    color: white;
-}
-
 .discordLink {
     font-size: 1.2rem;
     color: white;
