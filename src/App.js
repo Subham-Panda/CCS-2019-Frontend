@@ -1,5 +1,5 @@
 import React from 'react';
-import API from './API';
+import {API, setAuthToken} from './API';
 import shortid from 'shortid';
 
 import queryString from 'query-string';
@@ -32,8 +32,9 @@ class App extends React.Component {
 
 	isLoggedIn = () => {
 		const token = localStorage.getItem('token');
+		setAuthToken(token);
 		if (token) {
-			API.get(`${process.env.REACT_APP_ACCOUNTS_URL}/user?token=${token}`)
+			API.get(`${process.env.REACT_APP_ACCOUNTS_URL}/user`)
 			.then((response) => {
 				if (!response.data.success) {
 					this.logout();
