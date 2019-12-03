@@ -17,20 +17,31 @@ class ComingSoon extends React.Component {
         this.props.history.push('/register');
     }
 
+    renderInvalidAlert = () => {
+        if (this.props.invalidUser) {
+            return <Alert variant='danger' className='loggedInAlert'>
+                Induction are only open to 1<sup>st</sup> year students!
+            </Alert>;
+        } else {
+            return null;
+        }
+    }
+
     renderButton = () => {
         if (!this.props.loggedIn) {
-            return <Button
-                className='signupButton'
-                variant='light'
-                onClick={this.routeChange}>
-                <img src={csiIcon} alt='' className='csiIcon pr-2' />
-                Sign up for your CSI-VIT Account
-            </Button>
-        } else {
-            return <Alert variant='success' className='loggedInAlert'>
-                You have successfully registered for <b>CCS-2019</b>!
-                We will inform you when Round 1 goes live.
-            </Alert>;
+            if (this.props.invalidUser) {
+                return <Alert variant='danger' className='loggedInAlert'>
+                    Inductions are only open to 1<sup>st</sup> year students!
+                </Alert>;
+            } else {
+                return <Button
+                    className='signupButton'
+                    variant='light'
+                    onClick={this.routeChange}>
+                    <img src={csiIcon} alt='' className='csiIcon pr-2' />
+                    Sign up for your CSI-VIT Account
+                 </Button>;
+            }
         }
     }
 

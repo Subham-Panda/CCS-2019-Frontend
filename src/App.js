@@ -27,6 +27,7 @@ class App extends React.Component {
 		this.state = {
 			loggedIn: false,
 			user: undefined,
+			invalidUser: false
 		}
 	}
 
@@ -39,10 +40,22 @@ class App extends React.Component {
 				if (!response.data.success) {
 					this.logout();
 				} else {
-					this.setState(() => ({
-						loggedIn: true,
-						user: response.data.user,
-					}));
+					const user = response.data.user;
+					console.log(user);
+					if (user.regNo.startsWith('19') || (user.scope.indexOf('csi') > -1)) {
+						this.setState(() => ({
+							loggedIn: true,
+							user: user,
+							invalidUser: false
+						}));
+					} else {
+						this.setState(() => ({
+							loggedIn: false,
+							user: undefined,
+							invalidUser: true
+						}));
+						localStorage.removeItem('token');
+					}
 				}
 			}).catch((err) => {
 				console.log(`Error: ${err}`);
