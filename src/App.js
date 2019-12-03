@@ -63,7 +63,7 @@ class App extends React.Component {
 
 	renderHome = () => {
 		// if (this.state.loggedIn && this.state.user) {
-		// 	return Home;
+			// return <Home {...this.state}/>;
 		// } else {
 			return <ComingSoon {...this.state}/>;
 		// }
