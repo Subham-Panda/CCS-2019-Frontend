@@ -32,7 +32,7 @@ class App extends React.Component {
 	isLoggedIn = () => {
 		const token = localStorage.getItem('token');
 		if (token) {
-			API.get(`https://accounts.csivit.com/user?token=${token}`)
+			API.get(`${process.env.REACT_APP_ACCOUNTS_URL}/user?token=${token}`)
 			.then((response) => {
 				if (!response.data.success) {
 					this.logout();
@@ -90,7 +90,8 @@ class App extends React.Component {
 							{/* <Route path='/quiz' render={() => <Quiz {...this.state}/>} /> */}
 							
 							<Route path='/register' component={() => {
-								window.location.href="https://accounts.csivit.com/oauth/authorize?clientId=294A404E635266556A586E327234753778214125442A472D4B6150645367566B&state=2jen9jfnvjn0nv1e&redirectUrl=https%3A%2F%2Fccs.csivit.com%2Foauth%2Ftoken";
+								const redirectUrl = encodeURIComponent(process.env.REACT_APP_REDIRECT_URL);
+								window.location.href=`${process.env.REACT_APP_ACCOUNTS_URL}/oauth/authorize?clientId=${process.env.REACT_APP_CLIENT_ID}&state=2jen9jfnvjn0nv1e&redirectUrl=${redirectUrl}`;
 								return null;
 							}} />
 

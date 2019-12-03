@@ -37,6 +37,8 @@ test:
 deploy:
   stage: deploy
   script:
+    # Temporary Hack, don't modify veriables in sample.env
+    - cp sample.env .env.production
     - rsync -avuz $CI_PROJECT_DIR/build $SERVER_USER@$SERVER_DOMAIN:~/ccs-frontend
     # Non interactive ssh gracefully reloads server
   only:
