@@ -32,13 +32,7 @@ class HomeIllustration extends React.Component {
                 className='domainButton text-uppercase py-4'
                 size='lg'
                 variant='light'
-<<<<<<< Updated upstream
                 onClick={() => {this.handleStartQuiz(this.props.domain)}}>
-=======
-                onClick={ () => { this.handleStartQuiz(this.props.domain) 
-                
-                } }>
->>>>>>> Stashed changes
                     {this.props.domain}
                 </Button>
             </Col>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
-import { Container, Button } from 'react-bootstrap';
+import { Container, Button, Alert } from 'react-bootstrap';
 
 // Components
 import CSILogo from '../components/CSILogo';
@@ -17,7 +17,24 @@ class ComingSoon extends React.Component {
         this.props.history.push('/register');
     }
 
-    render () {
+    renderButton = () => {
+        if (!this.props.loggedIn) {
+            return <Button
+                className='signupButton'
+                variant='light'
+                onClick={this.routeChange}>
+                <img src={csiIcon} alt='' className='csiIcon pr-2' />
+                Sign up for your CSI-VIT Account
+            </Button>
+        } else {
+            return <Alert variant='success' className='loggedInAlert'>
+                You have successfully registered for <b>CCS-2019</b>!
+                We will inform you when Round 1 goes live.
+            </Alert>;
+        }
+    }
+
+    render() {
         return (
             <Container fluid='true' className='home text-center d-flex flex-column justify-content-around'>
                 <CSILogo />
@@ -38,13 +55,7 @@ class ComingSoon extends React.Component {
                 </div>
 
                 <div className='signupButtonContainer d-flex flex-column m-auto justify-content-center'>
-                    <Button 
-                    className='signupButton'
-                    variant='light'
-                    onClick={this.routeChange}>
-                        <img src={csiIcon} alt='' className='csiIcon pr-2' />
-                        Sign up for your CSI-VIT Account
-                    </Button>
+                    {this.renderButton()}
                 </div>
 
             </Container>
