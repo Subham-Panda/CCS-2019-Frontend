@@ -4,23 +4,39 @@ import { Col, Button } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom'
 
 import '../css/HomeIllustration.css';
+import Instructions from './Instructions';
 
 class HomeIllustration extends React.Component {
-    state = {
-        domain: false,
+    constructor(props) {
+        super(props);
+        this.state = {
+            domain: false,
+            showModal: false,
+        }
+    }
+
+    setModalShow = (val) => {
+        this.setState(() => ({
+            domain: false,
+            showModal: val,
+        }))
     }
 
     handleStartQuiz = async (selectedDomain) => {
         await this.setState(() => ({
             domain: selectedDomain,
         }));
-        this.props.history.push('/quiz');
+
+        return <Instructions
+            show={true}
+            onHide={() => this.setModalShow(false)}
+        />
     }
 
-    render () {
+    render() {
         return (
             <Col md='3'
-            className='illustrationContainer'
+                className='illustrationContainer'
             >
                 <img
                     src={this.props.imgSrc}
@@ -29,10 +45,10 @@ class HomeIllustration extends React.Component {
                 />
 
                 <Button
-                className='domainButton text-uppercase py-4'
-                size='lg'
-                variant='light'
-                onClick={() => {this.handleStartQuiz(this.props.domain)}}>
+                    className='domainButton text-uppercase py-4'
+                    size='lg'
+                    variant='light'
+                    onClick={() => { this.handleStartQuiz(this.props.domain) }}>
                     {this.props.domain}
                 </Button>
             </Col>
