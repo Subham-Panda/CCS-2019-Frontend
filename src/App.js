@@ -77,11 +77,11 @@ class App extends React.Component {
 	}
 
 	renderHome = () => {
-		if (this.state.loggedIn && this.state.user) {
-			return <Home {...this.state}/>;
-		} else {
+		// if (this.state.loggedIn && this.state.user) {
+		// 	return <Home {...this.state}/>;
+		// } else {
 			return <ComingSoon {...this.state}/>;
-		}
+		// }
 	}
 
 	componentDidMount() {
@@ -102,7 +102,7 @@ class App extends React.Component {
 						<Switch>
 							<Route exact path='/' render={() => this.renderHome()} />
 
-							<Route path='/quiz' render={() => <Quiz {...this.state}/>} />
+							{/* <Route path='/quiz' render={() => <Quiz {...this.state}/>} /> */}
 							
 							<Route path='/register' component={() => {
 								const redirectUrl = encodeURIComponent(process.env.REACT_APP_REDIRECT_URL);
