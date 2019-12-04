@@ -17,7 +17,7 @@ class CCSNavbar extends React.Component {
                 <Dropdown.Menu>
                     <Dropdown.Item href="/logout">Logout</Dropdown.Item>
                 </Dropdown.Menu>
-            </Dropdown>
+                </Dropdown>
             );
         } else {
             return null;
@@ -37,9 +37,9 @@ class CCSNavbar extends React.Component {
                             Join our Discord!
                             <FontAwesomeIcon className="ml-2 discordLink" icon={faDiscord} />
                         </Nav.Link>
-                        {this.showLogoutButton()}
                     </Nav>
                 </Navbar.Collapse>
+                {this.showLogoutButton()}
             </Navbar>
         )
     }
