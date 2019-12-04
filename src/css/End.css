@@ -1,0 +1,24 @@
+.endContent {
+    height: 60%;
+    color: var(--navbar-color);
+}
+
+.endContent .top {
+    font-size: 3rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.thankyou {
+    color: var(--navigation-button-color)
+}
+
+.endContent .bottom {
+    font-size: 1.5rem;
+}
+
+@media (max-width: 769px) {
+    .endContent {
+        height: 80%;
+    }
+}
