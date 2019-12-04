@@ -11,8 +11,8 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 // Components
 import CCSNavbar from './components/CCSNavbar';
 import CCSFooter from './components/CCSFooter';
-import Home from './components/Home';
-import Quiz from './components/Quiz';
+// import Home from './components/Home';
+// import Quiz from './components/Quiz';
 import ComingSoon from './components/ComingSoon';
 
 // Fonts
