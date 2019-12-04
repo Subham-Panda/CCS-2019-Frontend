@@ -2,8 +2,6 @@ import React from 'react';
 
 import { Container, Card, Button } from 'react-bootstrap';
 // import $ from 'jquery';
-
-import Timer from './Timer';
 import '../css/Quiz.css';
 
 class Quiz extends React.Component {
@@ -13,7 +11,6 @@ class Quiz extends React.Component {
                 <div>
                     <div className='d-flex justify-content-between'>
                         <div className='domainName'>Domain: DESIGN</div>
-                        <div className='timerContainer'><Timer /></div>
                     </div>
                     <Card className='quizCard questionCard py-2 my-2'>
                         <Card.Title className='questionNo pl-3'>Question 1)</Card.Title>
