@@ -42,6 +42,11 @@ class ComingSoon extends React.Component {
                     Sign up for your CSI-VIT Account
                  </Button>;
             }
+        } else {
+            return <Alert variant='success' className='loggedInAlert'>
+                You have successfully registered for <b>CCS-2019</b>!
+                We will inform you when Round 1 goes live.
+            </Alert>;
         }
     }
 
