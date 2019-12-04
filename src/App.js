@@ -11,8 +11,8 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 // Components
 import CCSNavbar from './components/CCSNavbar';
 import CCSFooter from './components/CCSFooter';
-import Home from './components/Home';
-import Quiz from './components/Quiz';
+// import Home from './components/Home';
+// import Quiz from './components/Quiz';
 import ComingSoon from './components/ComingSoon';
 
 // Fonts
@@ -76,11 +76,11 @@ class App extends React.Component {
 	}
 
 	renderHome = () => {
-		if (this.state.loggedIn && this.state.user) {
-			return <Home {...this.state}/>;
-		} else {
+		// if (this.state.loggedIn && this.state.user) {
+		// 	return <Home {...this.state}/>;
+		// } else {
 			return <ComingSoon {...this.state}/>;
-		}
+		// }
 	}
 
 	componentDidMount() {
@@ -101,9 +101,9 @@ class App extends React.Component {
 						<Switch>
 							<Route exact path='/' render={() => this.renderHome()} />
 
-							<Route path='/quiz/:domain' component={({match, location}) => {;
+							{/* <Route path='/quiz/:domain' component={({match, location}) => {;
 								return <Quiz domain={match.params.domain} {...this.state}/>
-							}} />
+							}} /> */}
 
 							<Route path='/login' component={() => {
 								const redirectUrl = encodeURIComponent(process.env.REACT_APP_REDIRECT_URL);
@@ -114,8 +114,9 @@ class App extends React.Component {
 							}} />
 
 							<Route path='/oauth/token' component={({match, location}) => {
-								const token = queryString.parse(location.search).token;
-								const state = queryString.parse(location.search).state;
+								const search = queryString.parse(location.search);
+								const token = search.token;
+								const state = search.state;
 								
 								// Only accept token if state matches
 								if (state === localStorage.getItem('state')) {
