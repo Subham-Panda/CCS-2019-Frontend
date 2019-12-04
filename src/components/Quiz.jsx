@@ -48,6 +48,27 @@ class Quiz extends React.Component {
         });
     }
 
+    renderQuestionSelector() {
+        if (!this.state.questions) {
+            return;
+        }
+
+        const selectors = [];
+        for (let i = 0; i < this.state.questions.length; i++) {
+            const q = this.state.questions[i];
+            let classN = '';
+            if (i === (this.state.currentQuestion-1)) {
+                classN = 'questionStatusCurrent';
+            } else if (q.response) {
+                classN = 'questionStatusAttempted';
+            } else {
+                classN = '';
+            }
+            selectors.push(<div key={q.questionNo} className={`mx-4 classN questionStatus text-center ${classN}`}>{q.questionNo}</div>);
+        }
+        return selectors;
+    }
+
     render() {
         return (
             <Container fluid='true' className='d-flex flex-column justify-content-center quizContainer'>
@@ -84,16 +105,7 @@ class Quiz extends React.Component {
                     </div>
                 </div>
                 <div className='questionStatusContainer mx-auto mt-4'>
-                    <div className='mx-4 questionStatusAttempted questionStatus text-center'>1</div>
-                    <div className='mx-4 questionStatusAttempted questionStatus text-center'>2</div>
-                    <div className='mx-4 questionStatusAttempted questionStatus text-center'>3</div>
-                    <div className='mx-4 questionStatusCurrent questionStatus text-center'>4</div>
-                    <div className='mx-4 questionStatus text-center'>5</div>
-                    <div className='mx-4 questionStatus text-center'>6</div>
-                    <div className='mx-4 questionStatus text-center'>7</div>
-                    <div className='mx-4 questionStatus text-center'>8</div>
-                    <div className='mx-4 questionStatus text-center'>9</div>
-                    <div className='mx-4 questionStatus text-center'>10</div>
+                    {this.renderQuestionSelector()}
                 </div>
             </Container>
         );
