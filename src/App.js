@@ -114,8 +114,9 @@ class App extends React.Component {
 							}} />
 
 							<Route path='/oauth/token' component={({match, location}) => {
-								const token = queryString.parse(location.search).token;
-								const state = queryString.parse(location.search).state;
+								const search = queryString.parse(location.search);
+								const token = search.token;
+								const state = search.state;
 								
 								// Only accept token if state matches
 								if (state === localStorage.getItem('state')) {
