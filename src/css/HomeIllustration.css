@@ -5,7 +5,14 @@
 .homeIllustration {
     width: 15vw;
     max-height: 40vh;
+    transition-duration: 0.2s;
 }
+
+.homeIllustration:hover {
+   cursor: pointer;
+   transform: scale(1.1);
+}
+
 
 .domainButton {
     background-color: var(--domain-button-color);

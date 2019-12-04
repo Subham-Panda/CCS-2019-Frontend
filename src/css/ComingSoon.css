@@ -37,9 +37,21 @@
     width: 2.2rem;
 }
 
+.loggedInAlert {
+    font-size: 1.2rem;
+    transition: 0.2s ease-out;
+}
+
+.loggedInAlert:hover {
+    transform: scale(1.05);
+}
+
 .signupButton {
     border-color: var(--subtitle-color);
-    color: var(--subtitle-color);
+    color: var(--navbar-color);
+    font-size: 1.2rem;
+
+    transform: translateY(-10%);
 }
 
 .signupButton:hover {

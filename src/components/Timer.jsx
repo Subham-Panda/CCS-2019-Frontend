@@ -16,14 +16,26 @@ class Timer extends React.Component {
         }
     }
 
-    render () {
-        setInterval(() => this.setState({
+    updateTimer = () => {
+        this.setState({
             timeDiff: ms(this.state.time - new Date(), {colonNotation: true, secondsDecimalDigits: 0}).split(':'),
             days: this.state.timeDiff[0],
             hours: this.state.timeDiff[1],
             minutes: this.state.timeDiff[2],
             seconds: this.state.timeDiff[3],
-        }), 20);
+        })
+    }
+
+    componentDidMount() {
+        this.timer = setInterval(() => this.updateTimer(), 100);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.timer);
+        this.timer = null;
+    }
+
+    render () {
         return (
             <div className='m-auto text-center d-flex justify-content-around timer'>
                 <div className='days'>{this.state.days}<div className='timeUnit'>days</div></div>
