@@ -3,29 +3,37 @@ import React from 'react';
 import { Container, Card, Button } from 'react-bootstrap';
 // import $ from 'jquery';
 import '../css/Quiz.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faClock } from '@fortawesome/free-solid-svg-icons';
 
 class Quiz extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {}
+    }
+
     render() {
         return (
-            <Container fluid='true' className='d-flex flex-column justify-content-around quizContainer'>
+            <Container fluid='true' className='d-flex flex-column justify-content-center quizContainer'>
                 <div>
                     <div className='d-flex justify-content-between'>
-                        <div className='domainName'>Domain: DESIGN</div>
+                        <div className='domainName mb-2'>Domain: <span className='domainProp'>{this.props.domain}</span></div>
+                        <div className='quizTimer pr-4'><FontAwesomeIcon icon={faClock} /> 25:33</div>
                     </div>
-                    <Card className='quizCard questionCard py-2 my-2'>
+                    <Card className='quizCard questionCard py-3 my-2 px-2'>
                         <Card.Title className='questionNo pl-3'>Question 1)</Card.Title>
                         <Card.Body className='questionCardBody py-0'>
                             <Card.Text>
                                 Some quick example text to build on the card title and make up the bulk of
-                                the card's content.<br />
+                                the card's content
                                 Some quick example text to build on the card title and make up the bulk of
-                                the card's content. <br />
+                                the card's content.
                                 Some quick example text to build on the card title and make up the bulk of
-                                the card's content. <br />
+                                the card's content.
                                 Some quick example text to build on the card title and make up the bulk of
-                                the card's content. <br />
+                                the card's content.
                                 Some quick example text to build on the card title and make up the bulk of
-                                the card's content. <br />
+                                the card's content.
                                 Some quick example text to build on the card title and make up the bulk of
                                 the card's content. <br />
                                 Some quick example text to build on the card title and make up the bulk of
@@ -42,7 +50,7 @@ class Quiz extends React.Component {
                         </Card.Body>
                         </Card>
                     </div>
-                    <div className='buttonContainer mt-1 d-flex justify-content-between'>
+                    <div className='buttonContainer mt-1 d-flex px-4 justify-content-between'>
                         <div>
                         <Button className='text-uppercase'>Previous</Button>
                         </div>
@@ -52,17 +60,17 @@ class Quiz extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className='questionStatusContainer d-flex justify-content-around py-2'>
-                    <div className='questionStatus text-center'>10</div>
-                    <div className='questionStatus text-center'>10</div>
-                    <div className='questionStatus text-center'>10</div>
-                    <div className='questionStatus text-center'>10</div>
-                    <div className='questionStatus text-center'>10</div>
-                    <div className='questionStatus text-center'>10</div>
-                    <div className='questionStatus text-center'>10</div>
-                    <div className='questionStatus text-center'>10</div>
-                    <div className='questionStatus text-center'>10</div>
-                    <div className='questionStatus text-center'>10</div>
+                <div className='questionStatusContainer mx-auto mt-4'>
+                    <div className='mx-4 questionStatusAttempted questionStatus text-center'>1</div>
+                    <div className='mx-4 questionStatusAttempted questionStatus text-center'>2</div>
+                    <div className='mx-4 questionStatusAttempted questionStatus text-center'>3</div>
+                    <div className='mx-4 questionStatusCurrent questionStatus text-center'>4</div>
+                    <div className='mx-4 questionStatus text-center'>5</div>
+                    <div className='mx-4 questionStatus text-center'>6</div>
+                    <div className='mx-4 questionStatus text-center'>7</div>
+                    <div className='mx-4 questionStatus text-center'>8</div>
+                    <div className='mx-4 questionStatus text-center'>9</div>
+                    <div className='mx-4 questionStatus text-center'>10</div>
                 </div>
             </Container>
         );

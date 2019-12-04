@@ -11,8 +11,8 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 // Components
 import CCSNavbar from './components/CCSNavbar';
 import CCSFooter from './components/CCSFooter';
-// import Home from './components/Home';
-// import Quiz from './components/Quiz';
+import Home from './components/Home';
+import Quiz from './components/Quiz';
 import ComingSoon from './components/ComingSoon';
 
 // Fonts
@@ -27,7 +27,7 @@ class App extends React.Component {
 		this.state = {
 			loggedIn: false,
 			user: undefined,
-			invalidUser: false
+			invalidUser: false,
 		}
 	}
 
@@ -41,7 +41,6 @@ class App extends React.Component {
 					this.logout();
 				} else {
 					const user = response.data.user;
-					console.log(user);
 					if (user.regNo.startsWith('19') || (user.scope.indexOf('csi') > -1)) {
 						this.setState(() => ({
 							loggedIn: true,
@@ -77,11 +76,11 @@ class App extends React.Component {
 	}
 
 	renderHome = () => {
-		// if (this.state.loggedIn && this.state.user) {
-		// 	return <Home {...this.state}/>;
-		// } else {
+		if (this.state.loggedIn && this.state.user) {
+			return <Home {...this.state}/>;
+		} else {
 			return <ComingSoon {...this.state}/>;
-		// }
+		}
 	}
 
 	componentDidMount() {
@@ -102,7 +101,9 @@ class App extends React.Component {
 						<Switch>
 							<Route exact path='/' render={() => this.renderHome()} />
 
-							{/* <Route path='/quiz' render={() => <Quiz {...this.state}/>} /> */}
+							<Route path='/quiz/:domain' component={({match, location}) => {;
+								return <Quiz domain={match.params.domain} {...this.state}/>
+							}} />
 							
 							<Route path='/register' component={() => {
 								const redirectUrl = encodeURIComponent(process.env.REACT_APP_REDIRECT_URL);

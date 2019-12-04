@@ -10,14 +10,14 @@ class HomeIllustration extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            domain: false,
+            domain: null,
             showModal: false,
         }
     }
 
     setModalShow = (val) => {
         this.setState(() => ({
-            domain: false,
+            domain: null,
             showModal: val,
         }))
     }
@@ -25,12 +25,8 @@ class HomeIllustration extends React.Component {
     handleStartQuiz = async (selectedDomain) => {
         await this.setState(() => ({
             domain: selectedDomain,
+            showModal: true,
         }));
-
-        return <Instructions
-            show={true}
-            onHide={() => this.setModalShow(false)}
-        />
     }
 
     render() {
@@ -51,6 +47,14 @@ class HomeIllustration extends React.Component {
                     onClick={() => { this.handleStartQuiz(this.props.domain) }}>
                     {this.props.domain}
                 </Button>
+
+                <Instructions
+                    show={this.state.showModal}
+                    onHide={() => this.setModalShow(false)}
+                    continue={() => {
+                        this.props.history.push(`/quiz/${this.props.domain}`);
+                    }}
+                />
             </Col>
         );
     }

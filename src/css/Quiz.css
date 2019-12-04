@@ -3,24 +3,41 @@
 }
 
 .domainName {
-    font-size: 1.3rem;
+    font-size: 1.6rem;
     color: var(--navbar-color);
+    font-weight: bold;
+}
+
+.domainProp {
+    text-transform: uppercase;
+}
+
+.quizTimer {
+    font-size: 1.6rem;
+    color: var(--navbar-color);
+    font-weight: bold;
+    vertical-align: middle;
 }
 
 .questionNo {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     color: white;
+    font-weight: bold;
 }
 
 .quizCard {
-    border-radius: 0.4rem;
+    border-radius: 1rem;
 }
 
 .questionCard {
     background-color: var(--navbar-color);
     color: white;
-    max-height: 17vh;
+    max-height: 20vh;
+}
+
+.questionCardBody {
     overflow-y: auto;
+    line-height: 1.3;
 }
 
 .illustration {
@@ -29,7 +46,8 @@
 }
 
 .answerCard {
-    height: 38vh;
+    height: 33vh;
+    line-height: 1.3;
 }
 
 .answerText {
@@ -45,11 +63,14 @@
 }
 
 .buttonContainer button {
-    border-radius: 0.4rem;
     border: none;
     background-color: var(--navigation-button-color);
-
+    border-radius: 1rem;
     width: 8vw;
+}
+
+.buttonContainer button:focus {
+    background-color: #db5555 !important;
 }
 
 .buttonContainer button:hover {
@@ -57,23 +78,45 @@
 }
 
 .buttonContainer .submitButton {
-    background-color: rgb(47, 1, 250);
+    background-color: #4481fb;
+}
+
+.buttonContainer .submitButton:hover {
+    background-color: #4471ca;
+}
+
+.buttonContainer .submitButton:focus {
+    background-color: #4471ca !important;
 }
 
 .questionStatus {
-    border: 1px solid var(--subtitle-color);
-    border-radius: 30rem;
-    width: 1.7vw;
-    height: 1.7vw;
-
-    background-color: var(--tagline-color);
-    color: white;
+    width: 3.6rem;
+    height: 3.6rem;
+    border: solid 0.8rem rgba(17, 53, 92, 0.16);
+    text-align: center;
+    line-height: 2.15rem;
+    color: var(--navbar-color);
+    font-weight: bold;
+    font-size: 1.3rem;
+    border-radius: 10rem;
+    background-color: white;
+    display: inline-block;
 }
 
-@media (max-width: 769px) {
+.questionStatusAttempted {
+    background-color: #bfdde6;
+    border-color: rgba(17, 53, 92, 0.16);
+}
+
+.questionStatusCurrent {
+    border-color: rgba(17, 53, 92, 0.46);
+}
+
+@media (max-width: 1025px) {
     .quizContainer {
         width: 100vw;
         overflow-y: scroll;
+        justify-content: space-around !important;
     }
 
     .illustration {
@@ -88,5 +131,11 @@
 
     .buttonContainer button {
         width: 20vw;
+    }
+
+    .questionStatusContainer {
+        overflow-x: scroll;
+        width: 86vw;
+        white-space: nowrap;
     }
 }
