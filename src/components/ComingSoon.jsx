@@ -14,7 +14,7 @@ import csiIcon from '../images/favicon.png';
 
 class ComingSoon extends React.Component {
     routeChange = () => {
-        this.props.history.push('/register');
+        this.props.history.push('/login');
     }
 
     renderInvalidAlert = () => {

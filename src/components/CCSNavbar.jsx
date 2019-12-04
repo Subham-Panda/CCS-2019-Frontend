@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDiscord } from '@fortawesome/free-brands-svg-icons';
-import { Navbar, Nav, Dropdown } from 'react-bootstrap';
+import { Navbar, Nav, Dropdown, Button } from 'react-bootstrap';
 
 import '../css/CCSNavbar.css'
 
@@ -20,7 +20,7 @@ class CCSNavbar extends React.Component {
                 </Dropdown>
             );
         } else {
-            return null;
+            return <Button variant='light ml-5 mr-2' onClick={() => {window.location.href='/login'}}>LOGIN</Button>;
         }
     }
     render() {

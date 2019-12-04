@@ -104,8 +104,8 @@ class App extends React.Component {
 							<Route path='/quiz/:domain' component={({match, location}) => {;
 								return <Quiz domain={match.params.domain} {...this.state}/>
 							}} />
-							
-							<Route path='/register' component={() => {
+
+							<Route path='/login' component={() => {
 								const redirectUrl = encodeURIComponent(process.env.REACT_APP_REDIRECT_URL);
 								const oauthState = encodeURIComponent(shortid.generate());
 								localStorage.setItem('state', oauthState);
