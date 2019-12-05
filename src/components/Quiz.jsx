@@ -256,6 +256,7 @@ class Quiz extends React.Component {
 
                 <EndConfirmation
                     show={this.state.showModal}
+                    domain={this.props.domain}
                     onHide={() => this.setModalShow(false)}
                     continue={() => {
                         API.post('/quiz/end', {domain: this.props.domain})
