@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Container, Card, Button } from 'react-bootstrap';
+import API from '../API';
 // import $ from 'jquery';
 import '../css/Quiz.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -9,7 +10,42 @@ import { faClock } from '@fortawesome/free-solid-svg-icons';
 class Quiz extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            questions: undefined,
+            timeStarted: undefined,
+            timeEnded: undefined,
+            currentQuestion: 1,
+        }
+    }
+
+    renderQuestion = () => {
+        if (this.state.questions) {
+            return this.state.questions[0].question;
+        } else {
+            return <i>Loading question...</i>;
+        }
+    }
+
+    handleNext = () => {
+
+    }
+
+    componentDidMount() {
+        if (!this.props.loggedIn) {
+            return;
+        }
+        API.post('/quiz/start', {domain: this.props.domain})
+        .then((response) => {
+            if (!response.data.success) {
+                console.log('Server Error');
+            } else {
+                this.setState(() => ({
+                    questions: response.data.responses,
+                    timeStarted: response.data.time.timeStarted,
+                    timeEnded: response.data.time.timeEnded,
+                }));
+            }
+        });
     }
 
     render() {
@@ -24,20 +60,7 @@ class Quiz extends React.Component {
                         <Card.Title className='questionNo pl-3'>Question 1)</Card.Title>
                         <Card.Body className='questionCardBody py-0'>
                             <Card.Text>
-                                Some quick example text to build on the card title and make up the bulk of
-                                the card's content
-                                Some quick example text to build on the card title and make up the bulk of
-                                the card's content.
-                                Some quick example text to build on the card title and make up the bulk of
-                                the card's content.
-                                Some quick example text to build on the card title and make up the bulk of
-                                the card's content.
-                                Some quick example text to build on the card title and make up the bulk of
-                                the card's content.
-                                Some quick example text to build on the card title and make up the bulk of
-                                the card's content. <br />
-                                Some quick example text to build on the card title and make up the bulk of
-                                the card's content.
+                                {this.renderQuestion()}
                             </Card.Text>
                         </Card.Body>
                     </Card>

@@ -51,9 +51,7 @@ class HomeIllustration extends React.Component {
                 <Instructions
                     show={this.state.showModal}
                     onHide={() => this.setModalShow(false)}
-                    continue={() => {
-                        this.props.history.push(`/quiz/${this.props.domain}`);
-                    }}
+                    continue={() => this.props.history.push(`/quiz/${this.props.domain}`)}
                 />
             </Col>
         );
