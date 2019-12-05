@@ -17,12 +17,19 @@ class Timer extends React.Component {
     }
 
     updateTimer = () => {
+        let diffTime = new Date(2019, 11, 5, 18, 57, 30) - new Date();
+        let timeArray = ms(diffTime, {colonNotation: true, secondsDecimalDigits: 0}).split(':');
+        if (diffTime <= 0) timeArray = ["0", "0", "0", "0"];
+        for (let i = 0; i < 4 - timeArray.length + 1; i++) {
+            timeArray.unshift("0");
+            console.log(timeArray);
+        }
         this.setState({
-            timeDiff: ms(this.state.time - new Date(), {colonNotation: true, secondsDecimalDigits: 0}).split(':'),
-            days: 0,
-            hours: this.state.timeDiff[0],
-            minutes: this.state.timeDiff[1],
-            seconds: this.state.timeDiff[2],
+            timeDiff: timeArray,
+            days: this.state.timeDiff[0],
+            hours: this.state.timeDiff[1],
+            minutes: this.state.timeDiff[2],
+            seconds: this.state.timeDiff[3],
         })
     }
 
