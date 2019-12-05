@@ -4,18 +4,17 @@ import { Container } from 'react-bootstrap';
 import CSILogo from './CSILogo';
 
 import '../css/End.css';
-class End extends React.Component {
+class Loading extends React.Component {
     render () {
         return (
             <Container>
                 <CSILogo />
                 <div className='endContent d-flex flex-column justify-content-center text-center'>
-                    <div className='top'><span className='thankyou'>Thank you</span> for playing!</div>
-                    <div className='bottom mt-4'>Your quiz for domain <b>{this.props.domain}</b> has ended. You may attempt the quizzes for the remaining domains <a href='/'>here</a>.</div>
+                    <div className='top'>Loading...</div>
                 </div>
             </Container>
         );
     }
 }
 
-export default End;
+export default Loading;

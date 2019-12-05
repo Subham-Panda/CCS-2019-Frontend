@@ -9,6 +9,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClock } from '@fortawesome/free-solid-svg-icons';
 import EndConfirmation from './EndConfirmation';
 import End from './End';
+import DomainInProgress from './DomainInProgress';
+import Loading from './Loading';
 
 class Quiz extends React.Component {
     constructor(props) {
@@ -21,7 +23,9 @@ class Quiz extends React.Component {
             answer: '',
             savedStatus: true,
             isLoading: true,
-            timeRemaining: undefined
+            timeRemaining: undefined,
+            errorMsg: undefined,
+            domainInProg: undefined,
         }
 
         this.timer = null;
@@ -41,8 +45,20 @@ class Quiz extends React.Component {
         this.updateQuestionState(this.state.currentQuestion + 1);
     }
 
+    hideNext = () => {
+        if (this.state.currentQuestion === 10) {
+            return 'd-none';
+        }
+    }
+
     handlePrevious = () => {
         this.updateQuestionState(this.state.currentQuestion - 1);
+    }
+
+    hidePrevious = () => {
+        if (this.state.currentQuestion === 1) {
+            return 'd-none';
+        }
     }
 
     updateQuestionState = (currentQuestion) => {
@@ -104,8 +120,11 @@ class Quiz extends React.Component {
         API.post('/quiz/start', {domain: this.props.domain})
         .then((response) => {
             if (!response.data.success) {
-                console.log('Server Error');
-                return;
+                this.setState({
+                    errorMsg: response.data.message,
+                    domainInProg: response.data.domain,
+                    isLoading: false,
+                });
             } else {
                 const timeStarted = new Date(response.data.time.timeStarted).getTime(); 
                 const timeEnded = new Date(response.data.time.timeEnded).getTime();
@@ -159,7 +178,15 @@ class Quiz extends React.Component {
 
     render() {
         if (this.state.isLoading) {
-            return null;
+            return (
+                <Loading />
+            );
+        }
+        if (this.state.errorMsg === 'anotherDomainInProgress') {
+            return <DomainInProgress domain={this.state.domainInProg}/>;
+        }
+        if (this.state.errorMsg === 'quizAlreadyAttempted') {
+            return <End domain={this.props.domain}/>;
         }
         return (
             <Container fluid='true' className='d-flex flex-column justify-content-center quizContainer'>
@@ -190,10 +217,10 @@ class Quiz extends React.Component {
                     </div>
                     <div className='buttonContainer mt-1 d-flex px-4 justify-content-between'>
                         <div>
-                        <Button className='text-uppercase' onClick={this.handlePrevious}>Previous</Button>
+                        <Button className={`text-uppercase ${this.hidePrevious()}`} onClick={this.handlePrevious}>Previous</Button>
                         </div>
                         <div>
-                            <Button className='text-uppercase' onClick={this.handleNext}>Next</Button>
+                            <Button className={`text-uppercase ${this.hideNext()}`} onClick={this.handleNext}>Next</Button>
                             <Button className='text-uppercase submitButton ml-4' onClick={() => this.setModalShow(true)}>End Quiz</Button>
                         </div>
                     </div>
@@ -205,7 +232,13 @@ class Quiz extends React.Component {
                 <EndConfirmation
                     show={this.state.showModal}
                     onHide={() => this.setModalShow(false)}
-                    continue={() => <End /> }
+                    continue={() => {
+                        API.post('/end', {domain: this.props.domain})
+                        .then((response) => {
+                            if (response.data.success)
+                                return <End />;
+                        });
+                    }}
                 />
             </Container>
         );
