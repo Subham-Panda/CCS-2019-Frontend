@@ -135,6 +135,7 @@ class App extends React.Component {
 									localStorage.setItem('token', token);
 									localStorage.removeItem('state');
 								}
+								this.isLoggedIn();
 								return <Redirect to='/'/>
 							}} />
 
