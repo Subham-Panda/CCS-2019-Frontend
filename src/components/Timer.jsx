@@ -1,6 +1,5 @@
 import React from 'react';
 
-import ms from 'pretty-ms';
 import '../css/Timer.css';
 
 class Timer extends React.Component {
@@ -8,7 +7,6 @@ class Timer extends React.Component {
         super(props);
         this.state = {
             time: this.props.date || new Date(2019, 11, 6, 12),
-            timeDiff: '',
             days: 0,
             hours: 0,
             minutes: 0,
@@ -17,18 +15,25 @@ class Timer extends React.Component {
     }
 
     updateTimer = () => {
-        let diffTime = this.state.time - new Date();
-        let timeArray = ms(diffTime, {colonNotation: true, secondsDecimalDigits: 0}).split(':');
-        if (diffTime <= 0) timeArray = ["0", "0", "0", "0"];
-        for (let i = 0; i < 4 - timeArray.length + 1; i++) {
-            timeArray.unshift("0");
-        }
+        let m = this.state.time - new Date();
+        if (m < 0) m = 0;
+        let seconds, hours, minutes, days, day, minute, hour, second;
+        second = 1000
+        minute = 60 * second
+        hour = 60 * minute
+        day = 24 * hour
+        days = Math.floor(m / day)
+        m -= (day * days)
+        hours = Math.floor(m / hour)
+        m -= (hour * hours)
+        minutes = Math.floor(m / minute)
+        m -= (minute * minutes)
+        seconds = Math.floor(m / second)
         this.setState({
-            timeDiff: timeArray,
-            days: this.state.timeDiff[0],
-            hours: this.state.timeDiff[1],
-            minutes: this.state.timeDiff[2],
-            seconds: this.state.timeDiff[3],
+            days: days,
+            hours: hours,
+            minutes: minutes,
+            seconds: seconds,
         })
     }
 
@@ -41,7 +46,7 @@ class Timer extends React.Component {
         this.timer = null;
     }
 
-    render () {
+    render() {
         return (
             <div className='m-auto text-center d-flex justify-content-around timer'>
                 <div className='days'>{this.state.days}<div className='timeUnit'>days</div></div>
