@@ -14,6 +14,7 @@ import CCSFooter from './components/CCSFooter';
 import Home from './components/Home';
 import Quiz from './components/Quiz';
 import ComingSoon from './components/ComingSoon';
+import NotLoggedIn from './components/NotLoggedIn';
 
 // Fonts
 import './css/fonts.css';
@@ -101,8 +102,9 @@ class App extends React.Component {
 						<Switch>
 							<Route exact path='/' render={() => this.renderHome()} />
 
-							<Route path='/quiz/:domain' component={({match, location}) => {;
-								return <Quiz domain={match.params.domain} {...this.state}/>
+							<Route path='/quiz/:domain' component={({match, location}) => {
+								if (this.state.loggedIn) return <Quiz domain={match.params.domain} {...this.state}/>;
+								else return <NotLoggedIn/>;
 							}} />
 
 							<Route path='/login' component={() => {

@@ -20,14 +20,32 @@ class Quiz extends React.Component {
 
     renderQuestion = () => {
         if (this.state.questions) {
-            return this.state.questions[0].question;
+            return this.state.questions[this.state.currentQuestion - 1].question;
         } else {
             return <i>Loading question...</i>;
         }
     }
 
     handleNext = () => {
+        this.updateQuestionState(this.state.currentQuestion + 1);
+    }
 
+    handlePrevious = () => {
+        this.updateQuestionState(this.state.currentQuestion - 1);
+    }
+
+    updateQuestionState = (currentQuestion) => {
+        if (currentQuestion < 1 || currentQuestion > 10) return;
+        this.setState(() => ({
+            currentQuestion: currentQuestion,
+        }));  
+    }
+
+    handleAnswer = () => {
+        clearTimeout(this.timeout);
+        this.timeout = setTimeout(() => {
+            
+        }, 2000);
     }
 
     componentDidMount() {
@@ -57,7 +75,7 @@ class Quiz extends React.Component {
                         <div className='quizTimer pr-4'><FontAwesomeIcon icon={faClock} /> 25:33</div>
                     </div>
                     <Card className='quizCard questionCard py-3 my-2 px-2'>
-                        <Card.Title className='questionNo pl-3'>Question 1)</Card.Title>
+                        <Card.Title className='questionNo pl-3'>Question {this.state.currentQuestion})</Card.Title>
                         <Card.Body className='questionCardBody py-0'>
                             <Card.Text>
                                 {this.renderQuestion()}
@@ -69,16 +87,16 @@ class Quiz extends React.Component {
                     <div className='py-2'>
                         <Card className='quizCard answerCard'>
                         <Card.Body>
-                            <textarea placeholder='Your answer here.' className='answerText p-2'/>
+                            <textarea placeholder='Your answer here.' className='answerText p-2' onChange={this.handleAnswer}/>
                         </Card.Body>
                         </Card>
                     </div>
                     <div className='buttonContainer mt-1 d-flex px-4 justify-content-between'>
                         <div>
-                        <Button className='text-uppercase'>Previous</Button>
+                        <Button className='text-uppercase' onClick={this.handlePrevious}>Previous</Button>
                         </div>
                         <div>
-                            <Button className='text-uppercase'>Next</Button>
+                            <Button className='text-uppercase' onClick={this.handleNext}>Next</Button>
                             <Button className='text-uppercase submitButton ml-4'>Submit</Button>
                         </div>
                     </div>
