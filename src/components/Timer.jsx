@@ -22,7 +22,6 @@ class Timer extends React.Component {
         if (diffTime <= 0) timeArray = ["0", "0", "0", "0"];
         for (let i = 0; i < 4 - timeArray.length + 1; i++) {
             timeArray.unshift("0");
-            console.log(timeArray);
         }
         this.setState({
             timeDiff: timeArray,
