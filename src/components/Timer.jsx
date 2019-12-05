@@ -17,7 +17,7 @@ class Timer extends React.Component {
     }
 
     updateTimer = () => {
-        let diffTime = new Date(2019, 11, 5, 18, 57, 30) - new Date();
+        let diffTime = this.state.time - new Date();
         let timeArray = ms(diffTime, {colonNotation: true, secondsDecimalDigits: 0}).split(':');
         if (diffTime <= 0) timeArray = ["0", "0", "0", "0"];
         for (let i = 0; i < 4 - timeArray.length + 1; i++) {
