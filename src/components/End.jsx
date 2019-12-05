@@ -11,7 +11,7 @@ class End extends React.Component {
                 <CSILogo />
                 <div className='endContent d-flex flex-column justify-content-center text-center'>
                     <div className='top'><span className='thankyou'>Thank you</span> for playing!</div>
-                    <div className='bottom mt-4'>Your quiz for domain <b>{this.props.domain}</b> has ended. You may attempt the quizzes for the remaining domains <a href='/'>here</a>.</div>
+                    <div className='bottom mt-4'>Your quiz for the <b>{this.props.domain}</b> domain has ended. You may attempt the quizzes for the remaining domains <a href='/'>here</a>.</div>
                 </div>
             </Container>
         );
