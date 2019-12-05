@@ -1,11 +1,14 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 import { Container, Card, Button } from 'react-bootstrap';
 import API from '../API';
-// import $ from 'jquery';
+
 import '../css/Quiz.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClock } from '@fortawesome/free-solid-svg-icons';
+import EndConfirmation from './EndConfirmation';
+import End from './End';
 
 class Quiz extends React.Component {
     constructor(props) {
@@ -15,7 +18,12 @@ class Quiz extends React.Component {
             timeStarted: undefined,
             timeEnded: undefined,
             currentQuestion: 1,
+            answer: '',
+            savedStatus: true,
+            isLoading: true,
         }
+
+        this.handleAnswer = this.handleAnswer.bind(this);
     }
 
     renderQuestion = () => {
@@ -36,43 +44,103 @@ class Quiz extends React.Component {
 
     updateQuestionState = (currentQuestion) => {
         if (currentQuestion < 1 || currentQuestion > 10) return;
-        this.setState(() => ({
-            currentQuestion: currentQuestion,
-        }));  
+        
+        if (!this.state.questions) return;
+        let initialContent = this.state.questions[currentQuestion - 1].response;
+
+        if (initialContent) this.setState({answer: initialContent, currentQuestion: currentQuestion});
+        else this.setState({answer: '', currentQuestion: currentQuestion});
+    }
+
+    renderSavedStatus = () => {
+        if (this.state.savedStatus) {
+            return <small className='text-success font-italic mr-1'>All changes saved.</small>;
+        } else return <small className='text-danger font-italic mr-1'>Saving...</small>;
+    }
+
+    handleChange = async (e) => {
+        await this.setState({answer: e.target.value});
+        this.handleAnswer();
     }
 
     handleAnswer = () => {
+        if(!this.state.questions) return;
+
         clearTimeout(this.timeout);
         this.timeout = setTimeout(() => {
-            
+            this.saveAnswers();
         }, 2000);
+        
+        this.setState({savedStatus: false});
+        let ques = this.state.questions[this.state.currentQuestion - 1];
+        ques.response = this.state.answer;
+        this.forceUpdate();
+    }
+
+    saveAnswers = () => {
+        API.post('/quiz/respond', {responses: this.state.questions, domain: this.props.domain})
+        .then((res) => {
+            if (!res.data.success) return;
+            this.setState({savedStatus: true});
+        });
+    }
+
+    setModalShow = (val) => {
+        this.setState(() => ({
+            showModal: val,
+        }));
     }
 
     componentDidMount() {
-        if (!this.props.loggedIn) {
-            return;
-        }
         API.post('/quiz/start', {domain: this.props.domain})
         .then((response) => {
             if (!response.data.success) {
                 console.log('Server Error');
+                return;
             } else {
                 this.setState(() => ({
                     questions: response.data.responses,
                     timeStarted: response.data.time.timeStarted,
                     timeEnded: response.data.time.timeEnded,
-                }));
+                    isLoading: false,
+                }));       
             }
         });
     }
 
+    renderQuestionSelector() {
+        if (!this.state.questions) {
+            return;
+        }
+
+        const selectors = [];
+        for (let i = 0; i < this.state.questions.length; i++) {
+            const q = this.state.questions[i];
+            let classN = '';
+            if (i === (this.state.currentQuestion-1)) {
+                classN = 'questionStatusCurrent';
+            } else if (q.response) {
+                classN = 'questionStatusAttempted';
+            } else {
+                classN = '';
+            }
+            selectors.push(<div key={q.questionNo} onClick={() => {this.updateQuestionState(i+1)}} className={`mx-4 classN questionStatus text-center ${classN}`}>{i+1}</div>);
+        }
+        return selectors;
+    }
+
     render() {
+        if (this.state.isLoading) {
+            return null;
+        }
         return (
             <Container fluid='true' className='d-flex flex-column justify-content-center quizContainer'>
                 <div>
                     <div className='d-flex justify-content-between'>
                         <div className='domainName mb-2'>Domain: <span className='domainProp'>{this.props.domain}</span></div>
-                        <div className='quizTimer pr-4'><FontAwesomeIcon icon={faClock} /> 25:33</div>
+                        <div className='quizTimer pr-4'>
+                            <FontAwesomeIcon icon={faClock} /> 25:33
+                            </div>
                     </div>
                     <Card className='quizCard questionCard py-3 my-2 px-2'>
                         <Card.Title className='questionNo pl-3'>Question {this.state.currentQuestion})</Card.Title>
@@ -87,7 +155,8 @@ class Quiz extends React.Component {
                     <div className='py-2'>
                         <Card className='quizCard answerCard'>
                         <Card.Body>
-                            <textarea placeholder='Your answer here.' className='answerText p-2' onChange={this.handleAnswer}/>
+                            <textarea placeholder='Your answer here.' className='answerText p-2' value={this.state.answer} onChange={(value) => this.handleChange(value)}/>
+                            <div className='text-right savedStatus p-1'>{this.renderSavedStatus()}</div>
                         </Card.Body>
                         </Card>
                     </div>
@@ -97,25 +166,22 @@ class Quiz extends React.Component {
                         </div>
                         <div>
                             <Button className='text-uppercase' onClick={this.handleNext}>Next</Button>
-                            <Button className='text-uppercase submitButton ml-4'>Submit</Button>
+                            <Button className='text-uppercase submitButton ml-4' onClick={() => this.setModalShow(true)}>End Quiz</Button>
                         </div>
                     </div>
                 </div>
                 <div className='questionStatusContainer mx-auto mt-4'>
-                    <div className='mx-4 questionStatusAttempted questionStatus text-center'>1</div>
-                    <div className='mx-4 questionStatusAttempted questionStatus text-center'>2</div>
-                    <div className='mx-4 questionStatusAttempted questionStatus text-center'>3</div>
-                    <div className='mx-4 questionStatusCurrent questionStatus text-center'>4</div>
-                    <div className='mx-4 questionStatus text-center'>5</div>
-                    <div className='mx-4 questionStatus text-center'>6</div>
-                    <div className='mx-4 questionStatus text-center'>7</div>
-                    <div className='mx-4 questionStatus text-center'>8</div>
-                    <div className='mx-4 questionStatus text-center'>9</div>
-                    <div className='mx-4 questionStatus text-center'>10</div>
+                    {this.renderQuestionSelector()}
                 </div>
+
+                <EndConfirmation
+                    show={this.state.showModal}
+                    onHide={() => this.setModalShow(false)}
+                    continue={() => <End /> }
+                />
             </Container>
         );
     }
 }
 
-export default Quiz;
+export default withRouter(Quiz);

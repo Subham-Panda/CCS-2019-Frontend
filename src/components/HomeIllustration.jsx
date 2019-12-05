@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Col, Button } from 'react-bootstrap';
-import { withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
 
 import '../css/HomeIllustration.css';
 import Instructions from './Instructions';

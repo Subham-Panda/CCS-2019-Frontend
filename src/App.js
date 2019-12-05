@@ -29,6 +29,7 @@ class App extends React.Component {
 			loggedIn: false,
 			user: undefined,
 			invalidUser: false,
+			isLoading: true,
 		}
 	}
 
@@ -46,13 +47,15 @@ class App extends React.Component {
 						this.setState(() => ({
 							loggedIn: true,
 							user: user,
-							invalidUser: false
+							invalidUser: false,
+							isLoading: false,
 						}));
 					} else {
 						this.setState(() => ({
 							loggedIn: false,
 							user: undefined,
-							invalidUser: true
+							invalidUser: true,
+							isLoading: false,
 						}));
 						localStorage.removeItem('token');
 					}
@@ -64,6 +67,7 @@ class App extends React.Component {
 			this.setState(() => ({
 				loggedIn: false,
 				user: undefined,
+				isLoading: false,
 			}));
 		}
 	}
@@ -73,7 +77,7 @@ class App extends React.Component {
 		this.setState(() => ({
 			loggedIn: false,
 			user: undefined
-		}))
+		}));
 	}
 
 	renderHome = () => {
@@ -88,9 +92,18 @@ class App extends React.Component {
 		this.isLoggedIn();
 	}
 
-	// TODO: disable some routes on Logged in
+	renderProtectedRoutes = () => {
+		if (this.state.loggedIn)
+		return <Route path='/quiz/:domain' component={({match, location}) => {
+			return <Quiz domain={match.params.domain} {...this.state}/>;
+		}} />
+		else return <NotLoggedIn/>;
+	}
 
 	render() {
+		if(this.state.isLoading) {
+			return null;
+		}
 		return (
 			<Router>
 				<div className='backgroundImage'></div>
@@ -102,10 +115,7 @@ class App extends React.Component {
 						<Switch>
 							<Route exact path='/' render={() => this.renderHome()} />
 
-							<Route path='/quiz/:domain' component={({match, location}) => {
-								if (this.state.loggedIn) return <Quiz domain={match.params.domain} {...this.state}/>;
-								else return <NotLoggedIn/>;
-							}} />
+							{this.renderProtectedRoutes()}
 
 							<Route path='/login' component={() => {
 								const redirectUrl = encodeURIComponent(process.env.REACT_APP_REDIRECT_URL);
