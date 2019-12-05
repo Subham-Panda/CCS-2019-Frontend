@@ -19,10 +19,10 @@ class Timer extends React.Component {
     updateTimer = () => {
         this.setState({
             timeDiff: ms(this.state.time - new Date(), {colonNotation: true, secondsDecimalDigits: 0}).split(':'),
-            days: this.state.timeDiff[0],
-            hours: this.state.timeDiff[1],
-            minutes: this.state.timeDiff[2],
-            seconds: this.state.timeDiff[3],
+            days: 0,
+            hours: this.state.timeDiff[0],
+            minutes: this.state.timeDiff[1],
+            seconds: this.state.timeDiff[2],
         })
     }
 

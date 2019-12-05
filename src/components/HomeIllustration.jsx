@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Col, Button } from 'react-bootstrap';
-import { withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
 
 import '../css/HomeIllustration.css';
 import Instructions from './Instructions';
@@ -51,9 +51,7 @@ class HomeIllustration extends React.Component {
                 <Instructions
                     show={this.state.showModal}
                     onHide={() => this.setModalShow(false)}
-                    continue={() => {
-                        this.props.history.push(`/quiz/${this.props.domain}`);
-                    }}
+                    continue={() => this.props.history.push(`/quiz/${this.props.domain}`)}
                 />
             </Col>
         );
