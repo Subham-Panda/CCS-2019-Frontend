@@ -21,7 +21,10 @@ class Quiz extends React.Component {
             answer: '',
             savedStatus: true,
             isLoading: true,
+            timeRemaining: undefined
         }
+
+        this.timer = null;
 
         this.handleAnswer = this.handleAnswer.bind(this);
     }
@@ -91,6 +94,12 @@ class Quiz extends React.Component {
         }));
     }
 
+    pad(n, width, z) {
+        z = z || '0';
+        n = n + '';
+        return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+    }
+
     componentDidMount() {
         API.post('/quiz/start', {domain: this.props.domain})
         .then((response) => {
@@ -98,12 +107,23 @@ class Quiz extends React.Component {
                 console.log('Server Error');
                 return;
             } else {
+                const timeStarted = new Date(response.data.time.timeStarted).getTime(); 
+                const timeEnded = new Date(response.data.time.timeEnded).getTime();
+                const timeRemaining = timeEnded - Date.now();
+                this.timer = setInterval(()=> {
+                    this.setState(() => {
+                        let t = this.state.timeRemaining - 500;
+                        if (t < 0) {t = 0};
+                        return {timeRemaining: t};
+                    });
+                }, 500);
                 this.setState(() => ({
                     questions: response.data.responses,
-                    timeStarted: response.data.time.timeStarted,
-                    timeEnded: response.data.time.timeEnded,
+                    timeStarted: timeStarted,
+                    timeEnded: timeEnded,
                     isLoading: false,
-                }));       
+                    timeRemaining: timeRemaining,
+                })); 
             }
         });
     }
@@ -129,6 +149,14 @@ class Quiz extends React.Component {
         return selectors;
     }
 
+    renderTime() {
+        let timeRemaining = this.state.timeRemaining;
+        const minutes = this.pad(Math.floor(timeRemaining/(60*1000)), 2);
+         timeRemaining -= (minutes * (60*1000));
+         const seconds = this.pad(Math.floor(timeRemaining/(1000)), 2);
+         return `${minutes}:${seconds}`;
+    }
+
     render() {
         if (this.state.isLoading) {
             return null;
@@ -139,7 +167,7 @@ class Quiz extends React.Component {
                     <div className='d-flex justify-content-between'>
                         <div className='domainName mb-2'>Domain: <span className='domainProp'>{this.props.domain}</span></div>
                         <div className='quizTimer pr-4'>
-                            <FontAwesomeIcon icon={faClock} /> 25:33
+                            <FontAwesomeIcon icon={faClock} /> {this.renderTime()}
                             </div>
                     </div>
                     <Card className='quizCard questionCard py-3 my-2 px-2'>
