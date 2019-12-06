@@ -150,7 +150,9 @@ class Quiz extends React.Component {
 
     render() {
         if (this.state.isLoading) {
-            return <Loading />;
+            return (
+                <Loading />
+            );
         }
         if (this.state.errorMsg === 'anotherDomainInProgress') {
             return <DomainInProgress domain={this.state.domainInProg}/>;

@@ -14,6 +14,7 @@ import CCSFooter from './components/CCSFooter';
 import Home from './components/Home';
 import Quiz from './components/Quiz';
 import ComingSoon from './components/ComingSoon';
+import Loading from './components/Loading';
 
 // Fonts
 import './css/fonts.css';
@@ -92,15 +93,30 @@ class App extends React.Component {
 	}
 
 	renderProtectedRoutes = () => {
-		if (this.state.loggedIn)
-		return <Route path='/quiz/:domain' component={({match, location}) => {
-			return <Quiz domain={match.params.domain} {...this.state}/>;
-		}} />
+		if (this.state.loggedIn && this.state.user.scope.indexOf('csi') >= 0)
+			return <Route path='/quiz/:domain' component={({match, location}) => {
+				return <Quiz domain={match.params.domain} {...this.state}/>;
+			}} />
 	}
 
 	render() {
 		if(this.state.isLoading) {
-			return null;
+			return (
+				<>
+				<div className='backgroundImage'></div>
+				<Container fluid={true} className='rootContainer'>
+					<Row className='navbarRow'>
+						<CCSNavbar {...this.state}/>
+					</Row>
+					<Row className='homePageRow d-flex'>
+					<Loading />
+					</Row>
+					<Row className='footerRow'>
+						<CCSFooter />
+					</Row>
+				</Container>
+				</>
+			);
 		}
 		return (
 			<Router>
