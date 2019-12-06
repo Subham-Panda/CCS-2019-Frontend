@@ -13,8 +13,8 @@ import DomainInProgress from './DomainInProgress';
 import Loading from './Loading';
 
 
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+// import SyntaxHighlighter from 'react-syntax-highlighter';
+// import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 class Quiz extends React.Component {
     constructor(props) {
         super(props);
@@ -135,7 +135,16 @@ class Quiz extends React.Component {
                 this.timer = setInterval(()=> {
                     this.setState(() => {
                         let t = this.state.timeRemaining - 500;
-                        if (t < 0) {t = 0};
+                        if (t < 0) {
+                            t = 0;
+                            clearInterval(this.timer);
+                            API.post('/quiz/end', {domain: this.props.domain})
+                            .then((response) => {
+                                this.setState({
+                                    errorMsg: 'quizAlreadyAttempted',
+                                });
+                            });
+                        };
                         return {timeRemaining: t};
                     });
                 }, 500);
@@ -174,9 +183,9 @@ class Quiz extends React.Component {
     renderTime() {
         let timeRemaining = this.state.timeRemaining;
         const minutes = this.pad(Math.floor(timeRemaining/(60*1000)), 2);
-         timeRemaining -= (minutes * (60*1000));
-         const seconds = this.pad(Math.floor(timeRemaining/(1000)), 2);
-         return `${minutes}:${seconds}`;
+        timeRemaining -= (minutes * (60*1000));
+        const seconds = this.pad(Math.floor(timeRemaining/(1000)), 2);
+        return `${minutes}:${seconds}`;
     }
 
     render() {
@@ -196,7 +205,7 @@ class Quiz extends React.Component {
                     <div className='d-flex justify-content-between'>
                         <div className='domainName mb-2'>Domain: <span className='domainProp'>{this.props.domain}</span></div>
                         <div className='quizTimer pr-4'>
-                            <FontAwesomeIcon icon={faClock} /> {this.renderTime()}
+                            <FontAwesomeIcon icon={faClock} /> <span style={{width: 4+'vw', display: 'inline-block'}}>{this.renderTime()}</span>
                             </div>
                     </div>
                     <Card className='quizCard questionCard py-3 my-2 px-2'>
