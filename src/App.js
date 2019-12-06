@@ -11,10 +11,9 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 // Components
 import CCSNavbar from './components/CCSNavbar';
 import CCSFooter from './components/CCSFooter';
-// import Home from './components/Home';
+import Home from './components/Home';
 import Quiz from './components/Quiz';
 import ComingSoon from './components/ComingSoon';
-import NotLoggedIn from './components/NotLoggedIn';
 
 // Fonts
 import './css/fonts.css';
@@ -81,11 +80,11 @@ class App extends React.Component {
 	}
 
 	renderHome = () => {
-		// if (this.state.loggedIn && this.state.user) {
-		// 	return <Home {...this.state}/>;
-		// } else {
+		if (this.state.loggedIn && this.state.user) {
+			return <Home {...this.state}/>;
+		} else {
 			return <ComingSoon {...this.state}/>;
-		// }
+		}
 	}
 
 	componentDidMount() {
@@ -97,7 +96,6 @@ class App extends React.Component {
 		return <Route path='/quiz/:domain' component={({match, location}) => {
 			return <Quiz domain={match.params.domain} {...this.state}/>;
 		}} />
-		else return <NotLoggedIn/>;
 	}
 
 	render() {
@@ -115,7 +113,7 @@ class App extends React.Component {
 						<Switch>
 							<Route exact path='/' render={() => this.renderHome()} />
 
-							{/* {this.renderProtectedRoutes()} */}
+							{this.renderProtectedRoutes()}
 
 							<Route path='/login' component={() => {
 								const redirectUrl = encodeURIComponent(process.env.REACT_APP_REDIRECT_URL);
@@ -135,6 +133,7 @@ class App extends React.Component {
 									localStorage.setItem('token', token);
 									localStorage.removeItem('state');
 								}
+								this.isLoggedIn();
 								return <Redirect to='/'/>
 							}} />
 
