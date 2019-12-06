@@ -23,10 +23,11 @@ class Instructions extends React.Component {
                         <li>The first round consists of 4 domains.</li>
                         <li>Participants can attempt more than one domain.</li>
                         <li>Each domain will contain 10 questions.</li>
-                        <li>Each domain has been allotted a maximum time of 30 minutes.</li>
+                        <li>Each domain has been allotted a maximum time of 30 minutes, hence descriptive answers are expected.</li>
                         <li>Participants are requested to answer the questions honestly in spirit of the event.</li>
                         <li>Evaluations are up to the discretion of CSI.</li>
                         <li>Inductions are only open for 1st year students.</li>
+                        <li>Submissions are accepted till 12:00 p.m. on Monday, 09/12/2019.</li>
                     </ul>
                 </Modal.Body>
                 <Modal.Footer>

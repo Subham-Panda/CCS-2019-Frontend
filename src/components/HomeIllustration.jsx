@@ -32,7 +32,7 @@ class HomeIllustration extends React.Component {
     render() {
         return (
             <Col md='3'
-                className='illustrationContainer'
+                className={`illustrationContainer ${this.props.classes}`}
             >
                 <img
                     src={this.props.imgSrc}

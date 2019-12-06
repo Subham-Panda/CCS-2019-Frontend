@@ -4,6 +4,8 @@ import { Container, Row } from 'react-bootstrap';
 
 import '../css/Home.css';
 
+import API from '../API';
+
 // Components
 import HomeIllustration from '../components/HomeIllustration';
 import CSILogo from '../components/CSILogo';
@@ -15,6 +17,41 @@ import techIllustration from '../images/tech_01.png';
 import videoIllustration from '../images/video_01.png';
 
 class Home extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            tech: 'notAttempted',
+            design: 'notAttempted',
+            management: 'notAttempted',
+            video: 'notAttempted'
+        }
+    }
+
+    currentStatus = (domainName) => {
+        if (this.state[domainName] === 'notAttempted'){
+            return '';
+        } else if (this.state[domainName] === 'ended') {
+            console.log(domainName);
+            return 'ended';
+        } else if (this.state[domainName] === 'progress') {
+            return 'inProgress';
+        }
+    }
+
+    componentDidMount () {
+        API.get('/quiz/domains')
+        .then((response) => {
+            if (response.data.success) {
+                this.setState({
+                    tech: response.data.tech,
+                    design: response.data.design,
+                    management: response.data.management,
+                    video: response.data.video,
+                });
+            }
+        })
+    }
+
     render () {
         return (
             <Container fluid='true' className='home text-center d-flex flex-column justify-content-around'>
@@ -35,10 +72,10 @@ class Home extends React.Component {
                 </Row>
 
                 <Row className='illustrations m-auto'>
-                    <HomeIllustration imgSrc={managementIllustration} domain='management'/>
-                    <HomeIllustration imgSrc={designIllustration} domain='design'/>
-                    <HomeIllustration imgSrc={techIllustration} domain='tech'/>
-                    <HomeIllustration imgSrc={videoIllustration} domain='video'/>
+                    <HomeIllustration imgSrc={managementIllustration} domain='management' classes={this.currentStatus('management')}/>
+                    <HomeIllustration imgSrc={designIllustration} domain='design' classes={this.currentStatus('design')}/>
+                    <HomeIllustration imgSrc={techIllustration} domain='tech' classes={this.currentStatus('tech')}/>
+                    <HomeIllustration imgSrc={videoIllustration} domain='video' classes={this.currentStatus('video')}/>
                 </Row>
             </Container>
         );

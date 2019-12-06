@@ -4,6 +4,20 @@
 	overflow-y: scroll;
 }
 
+.ended {
+    opacity: 0.6;
+}
+
+.ended button {
+    background-color: rgb(230, 255, 230);
+    border: 1px solid rgb(177, 235, 177);
+}
+
+.inProgress button {
+    background-color: rgb(255, 255, 221);
+    border: 1px solid rgb(245, 245, 205);
+}
+
 .titleText {
     font-size: 3.5rem;
     font-weight: bold;
