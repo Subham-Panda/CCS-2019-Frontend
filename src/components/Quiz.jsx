@@ -240,10 +240,11 @@ class Quiz extends React.Component {
                     show={this.state.showModal}
                     onHide={() => this.setModalShow(false)}
                     continue={() => {
-                        API.post('/end', {domain: this.props.domain})
+                        API.post('/quiz/end', {domain: this.props.domain})
                         .then((response) => {
-                            if (response.data.success)
-                                return <End />;
+                            this.setState({
+                                errorMsg: 'quizAlreadyAttempted',
+                            })
                         });
                     }}
                 />
