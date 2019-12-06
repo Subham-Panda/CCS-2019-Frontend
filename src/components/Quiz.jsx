@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
-import { Container, Card, Button } from 'react-bootstrap';
+import { Container, Card, Button, Row, Col } from 'react-bootstrap';
 import API from '../API';
 
 import '../css/Quiz.css';
@@ -12,6 +12,8 @@ import End from './End';
 import DomainInProgress from './DomainInProgress';
 import Loading from './Loading';
 
+import designquestion9 from '../images/designquestion9.png';
+import designquestion10 from '../images/designquestion10.png';
 
 // import SyntaxHighlighter from 'react-syntax-highlighter';
 // import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
@@ -38,9 +40,18 @@ class Quiz extends React.Component {
 
     renderQuestion = () => {
         if (this.state.questions) {
-            return this.state.questions[this.state.currentQuestion - 1].question;
+            return {__html: this.state.questions[this.state.currentQuestion - 1].question};
         } else {
-            return <i>Loading question...</i>;
+        return {__html: <i>Loading question...</i>};
+        }
+    }
+
+    renderQuestionImg = () => {
+        if (this.state.questions && this.state.currentQuestion === 9 && this.props.domain === 'design') {
+            return <Col sm={3} className='text-center imgContainer'><img src={designquestion9} className='illustration' alt=''/></Col>;
+        }
+        if (this.state.questions && this.state.currentQuestion === 10 && this.props.domain === 'design') {
+            return <Col sm={3} className='text-center imgContainer'><img src={designquestion10} className='illustration' alt=''/></Col>;
         }
     }
 
@@ -143,6 +154,7 @@ class Quiz extends React.Component {
                                 this.setState({
                                     errorMsg: 'quizAlreadyAttempted',
                                 });
+                                API.post('/quiz/respond', {responses: this.state.questions, domain: this.props.domain});
                             });
                         };
                         return {timeRemaining: t};
@@ -205,24 +217,20 @@ class Quiz extends React.Component {
                     <div className='d-flex justify-content-between'>
                         <div className='domainName mb-2'>Domain: <span className='domainProp'>{this.props.domain}</span></div>
                         <div className='quizTimer pr-4'>
-                            <FontAwesomeIcon icon={faClock} /> <span style={{width: 4+'vw', display: 'inline-block'}}>{this.renderTime()}</span>
+                            <FontAwesomeIcon icon={faClock} /> <span>{this.renderTime()}</span>
                             </div>
                     </div>
                     <Card className='quizCard questionCard py-3 my-2 px-2'>
                         <Card.Title className='questionNo pl-3'>Question {this.state.currentQuestion})</Card.Title>
                         <Card.Body className='questionCardBody py-0'>
-                            <Card.Text>
-                                {this.renderQuestion()}
-                                {/* <SyntaxHighlighter language="javascript" style={docco}>
-                                    {`helloworld=() => {
-    loasf
-}`}
-                                </SyntaxHighlighter> */}
-                            </Card.Text>
+                            <Card.Text dangerouslySetInnerHTML={this.renderQuestion()}/>
+                                
                         </Card.Body>
                     </Card>
                 </div>
-                <div>
+                <Row>        
+                    {this.renderQuestionImg()}
+                    <Col>
                     <div className='py-2'>
                         <Card className='quizCard answerCard'>
                         <Card.Body>
@@ -240,7 +248,8 @@ class Quiz extends React.Component {
                             <Button className='text-uppercase submitButton ml-4' onClick={() => this.setModalShow(true)}>End Quiz</Button>
                         </div>
                     </div>
-                </div>
+                    </Col>
+                </Row>
                 <div className='questionStatusContainer mx-auto mt-4'>
                     {this.renderQuestionSelector()}
                 </div>

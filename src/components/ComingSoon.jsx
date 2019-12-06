@@ -39,7 +39,7 @@ class ComingSoon extends React.Component {
                     variant='light'
                     onClick={this.routeChange}>
                     <img src={csiIcon} alt='' className='csiIcon pr-2' />
-                    Sign up for your CSI-VIT Account
+                    Login to your CSI-VIT account to begin
                  </Button>;
             }
         } else {
@@ -66,7 +66,6 @@ class ComingSoon extends React.Component {
                 </div>
 
                 <div className='timerContainer text-center m-auto'>
-                    <div className='subtitleText pb-4 m-auto'>Starts in</div>
                     <Timer />
                 </div>
 

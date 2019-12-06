@@ -11,12 +11,18 @@ class Timer extends React.Component {
             hours: 0,
             minutes: 0,
             seconds: 0,
+            isZero: 0,
         }
     }
 
     updateTimer = () => {
         let m = this.state.time - new Date();
-        if (m < 0) m = 0;
+        if (m < 0) {
+            m = 0;
+            this.setState({
+                isZero: true,
+            });
+        }
         let seconds, hours, minutes, days, day, minute, hour, second;
         second = 1000
         minute = 60 * second
@@ -47,6 +53,9 @@ class Timer extends React.Component {
     }
 
     render() {
+        if (this.state.isZero) {
+            return <div className='live'>Round 1 is now live!</div>;
+        }
         return (
             <div className='m-auto text-center d-flex justify-content-around timer'>
                 <div className='days'>{this.state.days}<div className='timeUnit'>days</div></div>
