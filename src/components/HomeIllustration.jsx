@@ -22,6 +22,27 @@ class HomeIllustration extends React.Component {
         }))
     }
 
+    renderButton = () => {
+        if (this.props.classes === 'ended') {
+            return <Button
+                className='domainButton text-uppercase py-4'
+                size='lg'
+                variant='light'
+                disabled
+                onClick={() => { this.handleStartQuiz(this.props.domain) }}>
+                {this.props.domain}
+            </Button>;
+        } else {
+            return <Button
+                className='domainButton text-uppercase py-4'
+                size='lg'
+                variant='light'
+                onClick={() => { this.handleStartQuiz(this.props.domain) }}>
+                {this.props.domain}
+            </Button>
+        }
+    }
+
     handleStartQuiz = async (selectedDomain) => {
         await this.setState(() => ({
             domain: selectedDomain,
@@ -41,13 +62,7 @@ class HomeIllustration extends React.Component {
                     onClick={() => { this.handleStartQuiz(this.props.domain) }}
                 />
 
-                <Button
-                    className='domainButton text-uppercase py-4'
-                    size='lg'
-                    variant='light'
-                    onClick={() => { this.handleStartQuiz(this.props.domain) }}>
-                    {this.props.domain}
-                </Button>
+                {this.renderButton()}
 
                 <Instructions
                     show={this.state.showModal}

@@ -11,10 +11,10 @@ import HomeIllustration from '../components/HomeIllustration';
 import CSILogo from '../components/CSILogo';
 
 // Images
-import managementIllustration from '../images/management_01.png';
-import designIllustration from '../images/design_01.png';
-import techIllustration from '../images/tech_01.png';
-import videoIllustration from '../images/video_01.png';
+import managementIllustration from '../images/managementIllustration.png';
+import designIllustration from '../images/designIllustration.png';
+import techIllustration from '../images/techIllustration.png';
+import videoIllustration from '../images/videoIllustration.png';
 
 class Home extends React.Component {
     constructor(props) {
@@ -54,11 +54,11 @@ class Home extends React.Component {
 
     render () {
         return (
-            <Container fluid='true' className='home text-center d-flex flex-column justify-content-around'>
+            <Container fluid='true' className='home text-center d-flex flex-column justify-content-center'>
                 <CSILogo />
 
                 <Row className='textContainer m-auto'>
-                    <div className='titleText text-uppercase m-auto pb-3'>
+                    <div className='titleText text-uppercase m-auto pb-1'>
                         Core Committee Selections
                     </div>
 
@@ -66,12 +66,12 @@ class Home extends React.Component {
                         Be a part of CSI where skilled designers, developers and tech enthusiasts engage in a lot of projects and hackathons, to help push technology forward.
                     </div>
 
-                    <div className='subtitleText pt-4 m-auto'>
+                    <div className='subtitleText pt-2 m-auto'>
                         Choose a domain
                     </div>
                 </Row>
 
-                <Row className='illustrations m-auto'>
+                <Row className='illustrations mx-auto'>
                     <HomeIllustration imgSrc={managementIllustration} domain='management' classes={this.currentStatus('management')}/>
                     <HomeIllustration imgSrc={designIllustration} domain='design' classes={this.currentStatus('design')}/>
                     <HomeIllustration imgSrc={techIllustration} domain='tech' classes={this.currentStatus('tech')}/>

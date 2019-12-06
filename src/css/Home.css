@@ -4,18 +4,15 @@
 	overflow-y: scroll;
 }
 
-.ended {
-    opacity: 0.6;
-}
-
 .ended button {
-    background-color: rgb(230, 255, 230);
-    border: 1px solid rgb(177, 235, 177);
+    background-color: rgb(224, 224, 224) !important;
+    border: 1px solid rgb(224, 224, 224) !important;
+    opacity: 1 !important;
 }
 
 .inProgress button {
-    background-color: rgb(255, 255, 221);
-    border: 1px solid rgb(245, 245, 205);
+    background-image: linear-gradient(to right,rgba(41, 219, 151, 0.698) 0% 40%, white 40% 100%);
+    border: 1px solid rgb(177, 235, 177);
 }
 
 .titleText {
@@ -26,6 +23,7 @@
 
 .textContainer {
     width: 60%;
+    transform: translateY(-20%);
 }
 
 .taglineText {
@@ -42,6 +40,7 @@
 
 .illustrations {
     width: 70%;
+    transform: translateY(-20%);
 }
 
 @media (max-width: 1225px) {

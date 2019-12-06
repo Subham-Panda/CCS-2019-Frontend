@@ -6,13 +6,13 @@
     width: 15vw;
     max-height: 40vh;
     transition-duration: 0.2s;
+    transform: translateY(-4%);
 }
 
 .homeIllustration:hover {
    cursor: pointer;
    transform: scale(1.1);
 }
-
 
 .domainButton {
     background-color: var(--domain-button-color);
@@ -22,7 +22,7 @@
 
     font-size: 1rem;
     font-weight: bold;
-    transform:translateY(-75%);
+    transform:translateY(-15%);
     color: var(--navbar-color);
 }
 
@@ -39,14 +39,6 @@
 @media (max-width: 769px) {
     .homeIllustration {
         width: 30vw;
-    }
-
-    .techIllustration {
-        transform: translateX(-20%);
-    }
-
-    .videoIllustration {
-        transform: translateX(-8%);
     }
 
     .domainButton {
