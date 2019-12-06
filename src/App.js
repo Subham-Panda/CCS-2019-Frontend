@@ -81,7 +81,7 @@ class App extends React.Component {
 	}
 
 	renderHome = () => {
-		if (this.state.loggedIn && this.state.user.scope.indexOf('csi') >= 0) {
+		if (this.state.loggedIn) {
 			return <Home {...this.state}/>;
 		} else {
 			return <ComingSoon {...this.state}/>;
@@ -93,7 +93,7 @@ class App extends React.Component {
 	}
 
 	renderProtectedRoutes = () => {
-		if (this.state.loggedIn && this.state.user.scope.indexOf('csi') >= 0)
+		if (this.state.loggedIn)
 			return <Route path='/quiz/:domain' component={({match, location}) => {
 				return <Quiz domain={match.params.domain} {...this.state}/>;
 			}} />

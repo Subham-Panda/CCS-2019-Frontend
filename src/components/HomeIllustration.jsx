@@ -38,6 +38,7 @@ class HomeIllustration extends React.Component {
                     src={this.props.imgSrc}
                     alt={this.props.domain}
                     className={`homeIllustration ${this.props.domain}Illustration`}
+                    onClick={() => { this.handleStartQuiz(this.props.domain) }}
                 />
 
                 <Button
