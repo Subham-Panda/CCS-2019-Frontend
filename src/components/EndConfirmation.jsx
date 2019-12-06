@@ -21,8 +21,8 @@ class EndConfirmation extends React.Component {
                     Clicking Continue will end the Round 1 for {this.props.domain} domain. Are you sure you want to proceed?
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button onClick={this.props.continue} className='continueButton'>Continue</Button>
                     <Button onClick={this.props.onHide} className='instructionCloseButton'>Close</Button>
+                    <Button onClick={this.props.continue} className='continueButton'>Continue</Button>
                 </Modal.Footer>
             </Modal>
         );

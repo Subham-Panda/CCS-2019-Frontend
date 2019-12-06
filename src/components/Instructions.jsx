@@ -30,8 +30,8 @@ class Instructions extends React.Component {
                     </ul>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button onClick={this.props.continue} className='continueButton'>Continue</Button>
                     <Button onClick={this.props.onHide} className='instructionCloseButton'>Close</Button>
+                    <Button onClick={this.props.continue} className='continueButton'>Continue</Button>
                 </Modal.Footer>
             </Modal>
         );
