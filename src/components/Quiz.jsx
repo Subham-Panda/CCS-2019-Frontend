@@ -12,6 +12,9 @@ import End from './End';
 import DomainInProgress from './DomainInProgress';
 import Loading from './Loading';
 
+
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 class Quiz extends React.Component {
     constructor(props) {
         super(props);
@@ -156,8 +159,7 @@ class Quiz extends React.Component {
         }
         if (this.state.errorMsg === 'anotherDomainInProgress') {
             return <DomainInProgress domain={this.state.domainInProg}/>;
-        }
-        if (this.state.errorMsg === 'quizAlreadyAttempted') {
+        } else if (this.state.errorMsg === 'quizAlreadyAttempted') {
             return <End domain={this.props.domain}/>;
         }
         return (
@@ -174,6 +176,11 @@ class Quiz extends React.Component {
                         <Card.Body className='questionCardBody py-0'>
                             <Card.Text>
                                 {this.renderQuestion()}
+                                <SyntaxHighlighter language="javascript" style={docco}>
+                                    {`helloworld=() => {
+    loasf
+}`}
+                                </SyntaxHighlighter>
                             </Card.Text>
                         </Card.Body>
                     </Card>

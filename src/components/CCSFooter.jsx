@@ -1,6 +1,4 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faDiscord } from '@fortawesome/free-brands-svg-icons';
 
 import { Row, Container } from 'react-bootstrap';
 
@@ -45,13 +43,6 @@ class CCSFooter extends React.Component {
                             rel='noopener noreferrer'
                         >
                             <img src={csivitu} className='footer-img' alt='csivit'/>
-                        </a>
-                        <a
-                            href='https://discord.gg/yVNt7Jd'
-                            target='_blank'
-                            rel='noopener noreferrer'
-                        >
-                            <FontAwesomeIcon className="footer-img discordIcon" icon={faDiscord} />
                         </a>
                     </Row>
                 </Container>
