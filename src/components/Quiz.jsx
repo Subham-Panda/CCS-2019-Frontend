@@ -204,11 +204,11 @@ class Quiz extends React.Component {
                         <Card.Body className='questionCardBody py-0'>
                             <Card.Text>
                                 {this.renderQuestion()}
-                                <SyntaxHighlighter language="javascript" style={docco}>
+                                {/* <SyntaxHighlighter language="javascript" style={docco}>
                                     {`helloworld=() => {
     loasf
 }`}
-                                </SyntaxHighlighter>
+                                </SyntaxHighlighter> */}
                             </Card.Text>
                         </Card.Body>
                     </Card>
