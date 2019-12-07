@@ -11,10 +11,10 @@ import HomeIllustration from '../components/HomeIllustration';
 import CSILogo from '../components/CSILogo';
 
 // Images
-import managementIllustration from '../images/managementIllustration.png';
-import designIllustration from '../images/designIllustration.png';
-import techIllustration from '../images/techIllustration.png';
-import videoIllustration from '../images/videoIllustration.png';
+import managementIllustration from '../images/managementIllustrationComp.png';
+import designIllustration from '../images/designIllustrationComp.png';
+import techIllustration from '../images/techIllustrationComp.png';
+import videoIllustration from '../images/videoIllustrationComp.png';
 
 class Home extends React.Component {
     constructor(props) {
