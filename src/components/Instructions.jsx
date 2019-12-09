@@ -27,7 +27,7 @@ class Instructions extends React.Component {
                         <li>Participants are requested to answer the questions honestly in spirit of the event.</li>
                         <li>Evaluations are up to the discretion of CSI.</li>
                         <li>Inductions are only open for 1st year students.</li>
-                        <li>Submissions are accepted till 12:00 p.m. on Monday, 09/12/2019.</li>
+                        <li>Submissions have been extended till 12:00 p.m. on Wednesday, 11/12/2019.</li>
                     </ul>
                 </Modal.Body>
                 <Modal.Footer>
