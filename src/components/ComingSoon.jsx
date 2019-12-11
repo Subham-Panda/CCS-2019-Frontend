@@ -34,6 +34,7 @@ class ComingSoon extends React.Component {
                     Inductions are only open to 1<sup>st</sup> year students!
                 </Alert>;
             } else {
+                if (!this.props.isTimeOver)
                 return <Button
                     className='signupButton'
                     variant='light'
@@ -41,11 +42,13 @@ class ComingSoon extends React.Component {
                     <img src={csiIcon} alt='' className='csiIcon pr-2' />
                     Login to your CSI-VIT account to begin
                  </Button>;
+                else return <Alert variant='success' className='loggedInAlert'>
+                Round 1 for <b>CCS-2019</b> is over! The shortlisted participants will be contacted via SMS or call.
+            </Alert>;;
             }
         } else {
             return <Alert variant='success' className='loggedInAlert'>
-                You have successfully registered for <b>CCS-2019</b>!
-                We will inform you when Round 1 goes live.
+                Round 1 for <b>CCS-2019</b> is over! The shortlisted participants will be contacted via SMS or call.
             </Alert>;
         }
     }
@@ -66,7 +69,7 @@ class ComingSoon extends React.Component {
                 </div>
 
                 <div className='timerContainer text-center m-auto'>
-                    <Timer />
+                    <Timer date={this.props.timeEnd}/>
                 </div>
 
                 <div className='signupButtonContainer d-flex flex-column m-auto justify-content-center'>

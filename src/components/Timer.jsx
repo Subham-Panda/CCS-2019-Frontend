@@ -6,7 +6,7 @@ class Timer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            time: this.props.date || new Date(2019, 11, 6, 12),
+            time: this.props.date || new Date(2019, 11, 7, 12),
             days: 0,
             hours: 0,
             minutes: 0,
@@ -54,7 +54,9 @@ class Timer extends React.Component {
 
     render() {
         if (this.state.isZero) {
-            return <div className='live'>Round 1 is now live!</div>;
+            return <>
+            <div className='live'>Round 1 has ended!</div>
+            </>;
         }
         return (
             <div className='m-auto text-center d-flex justify-content-around timer'>

@@ -1,5 +1,5 @@
 import React from 'react';
-import {API, setAuthToken} from './API';
+import { API, setAuthToken } from './API';
 import shortid from 'shortid';
 
 import queryString from 'query-string';
@@ -30,6 +30,8 @@ class App extends React.Component {
 			user: undefined,
 			invalidUser: false,
 			isLoading: true,
+			timeEnd: new Date(2019, 11, 11, 12),
+			isTimeOver: false,
 		}
 	}
 
@@ -38,31 +40,31 @@ class App extends React.Component {
 		setAuthToken(token);
 		if (token) {
 			API.get(`${process.env.REACT_APP_ACCOUNTS_URL}/user`)
-			.then((response) => {
-				if (!response.data.success) {
-					this.logout();
-				} else {
-					const user = response.data.user;
-					if (user.regNo.startsWith('19') || (user.scope.indexOf('csi') > -1)) {
-						this.setState(() => ({
-							loggedIn: true,
-							user: user,
-							invalidUser: false,
-							isLoading: false,
-						}));
+				.then((response) => {
+					if (!response.data.success) {
+						this.logout();
 					} else {
-						this.setState(() => ({
-							loggedIn: false,
-							user: undefined,
-							invalidUser: true,
-							isLoading: false,
-						}));
-						localStorage.removeItem('token');
+						const user = response.data.user;
+						if (user.regNo.startsWith('19') || (user.scope.indexOf('csi') > -1)) {
+							this.setState(() => ({
+								loggedIn: true,
+								user: user,
+								invalidUser: false,
+								isLoading: false,
+							}));
+						} else {
+							this.setState(() => ({
+								loggedIn: false,
+								user: undefined,
+								invalidUser: true,
+								isLoading: false,
+							}));
+							localStorage.removeItem('token');
+						}
 					}
-				}
-			}).catch((err) => {
-				console.log(`Error: ${err}`);
-			});
+				}).catch((err) => {
+					console.log(`Error: ${err}`);
+				});
 		} else {
 			this.setState(() => ({
 				loggedIn: false,
@@ -81,40 +83,51 @@ class App extends React.Component {
 	}
 
 	renderHome = () => {
-		if (this.state.loggedIn) {
-			return <Home {...this.state}/>;
+		if (this.state.loggedIn && !this.state.isTimeOver) {
+			return <Home {...this.state} />;
 		} else {
-			return <ComingSoon {...this.state}/>;
+			return <ComingSoon {...this.state} />;
 		}
 	}
 
 	componentDidMount() {
 		this.isLoggedIn();
+		this.timer = setInterval(() => this.updateTimer(), 100);
+	}
+
+	updateTimer = () => {
+		let m = this.state.timeEnd - new Date();
+		if (m < 0) {
+			m = 0;
+			this.setState({
+				isTimeOver: true,
+			});
+		}
 	}
 
 	renderProtectedRoutes = () => {
-		if (this.state.loggedIn)
-			return <Route path='/quiz/:domain' component={({match, location}) => {
-				return <Quiz domain={match.params.domain} {...this.state}/>;
+		if (this.state.loggedIn && !this.state.isTimeOver)
+			return <Route path='/quiz/:domain' component={({ match, location }) => {
+				return <Quiz domain={match.params.domain} {...this.state} />;
 			}} />
 	}
 
 	render() {
-		if(this.state.isLoading) {
+		if (this.state.isLoading) {
 			return (
 				<>
-				<div className='backgroundImage'></div>
-				<Container fluid={true} className='rootContainer'>
-					<Row className='navbarRow'>
-						<CCSNavbar {...this.state}/>
-					</Row>
-					<Row className='homePageRow d-flex'>
-					<Loading />
-					</Row>
-					<Row className='footerRow'>
-						<CCSFooter />
-					</Row>
-				</Container>
+					<div className='backgroundImage'></div>
+					<Container fluid={true} className='rootContainer'>
+						<Row className='navbarRow'>
+							<CCSNavbar {...this.state} />
+						</Row>
+						<Row className='homePageRow d-flex'>
+							<Loading />
+						</Row>
+						<Row className='footerRow'>
+							<CCSFooter />
+						</Row>
+					</Container>
 				</>
 			);
 		}
@@ -123,7 +136,7 @@ class App extends React.Component {
 				<div className='backgroundImage'></div>
 				<Container fluid={true} className='rootContainer'>
 					<Row className='navbarRow'>
-						<CCSNavbar {...this.state}/>
+						<CCSNavbar {...this.state} />
 					</Row>
 					<Row className='homePageRow d-flex'>
 						<Switch>
@@ -135,30 +148,30 @@ class App extends React.Component {
 								const redirectUrl = encodeURIComponent(process.env.REACT_APP_REDIRECT_URL);
 								const oauthState = encodeURIComponent(shortid.generate());
 								localStorage.setItem('state', oauthState);
-								window.location.href=`${process.env.REACT_APP_ACCOUNTS_URL}/oauth/authorize?clientId=${process.env.REACT_APP_CLIENT_ID}&state=${oauthState}&redirectUrl=${redirectUrl}`;
+								window.location.href = `${process.env.REACT_APP_ACCOUNTS_URL}/oauth/authorize?clientId=${process.env.REACT_APP_CLIENT_ID}&state=${oauthState}&redirectUrl=${redirectUrl}`;
 								return null;
 							}} />
 
-							<Route path='/oauth/token' component={({match, location}) => {
+							<Route path='/oauth/token' component={({ match, location }) => {
 								const search = queryString.parse(location.search);
 								const token = search.token;
 								const state = search.state;
-								
+
 								// Only accept token if state matches
 								if (state === localStorage.getItem('state')) {
 									localStorage.setItem('token', token);
 									localStorage.removeItem('state');
 								}
 								this.isLoggedIn();
-								return <Redirect to='/'/>
+								return <Redirect to='/' />
 							}} />
 
 							<Route path='/logout' component={() => {
 								this.logout();
-								return <Redirect to='/'/>;
+								return <Redirect to='/' />;
 							}} />
 
-          				</Switch>
+						</Switch>
 					</Row>
 					<Row className='footerRow'>
 						<CCSFooter />
