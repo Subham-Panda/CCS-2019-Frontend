@@ -55,7 +55,7 @@ class Timer extends React.Component {
     render() {
         if (this.state.isZero) {
             return <>
-            <div className='live'>Round 1 has ended!</div>
+            <div className='live'>Thank you for 1500 submissions!</div>
             </>;
         }
         return (

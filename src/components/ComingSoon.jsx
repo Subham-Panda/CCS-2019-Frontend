@@ -44,7 +44,7 @@ class ComingSoon extends React.Component {
                  </Button>;
                 else return <Alert variant='success' className='loggedInAlert'>
                 Round 1 for <b>CCS-2019</b> is over! The shortlisted participants will be contacted via SMS or call.
-            </Alert>;;
+            </Alert>;
             }
         } else {
             return <Alert variant='success' className='loggedInAlert'>
